@@ -35,13 +35,14 @@ enum BodyParts {
 }
 
 type FormData = {
-	painlevel: PainLevels;
+	painLevel: PainLevels;
 	bodyPart: BodyParts;
 };
 
 const ContentWrapper = () => {
 	const [currentPerspective, setCurrentPerspective] = useState(0);
-	const [formData, setFormData] = useState<FormData>({ painlevel: PainLevels.none, bodyPart: BodyParts.fullBody });
+	const [formData, setFormData] = useState<FormData>({ painLevel: PainLevels.none, bodyPart: BodyParts.fullBody });
+	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
 
 	const perspectives = [
 		{ name: "Front", svg: <Front /> },
@@ -54,6 +55,19 @@ const ContentWrapper = () => {
 		const { name, value } = e.target;
 		console.log(e.target);
 		setFormData({ ...formData, [name]: value });
+	};
+
+	const handleSelectOpen = (name: string) => {
+		setSelectIsOpen({ ...selectIsOpen, [name]: true });
+		Object.keys(selectIsOpen).forEach((key) => {
+			if (key !== name) {
+				setSelectIsOpen((prevState) => ({ ...prevState, [key]: false }));
+			}
+		});
+	};
+
+	const handleSelectClose = (name: string) => {
+		setSelectIsOpen({ ...selectIsOpen, [name]: false });
 	};
 
 	return (
@@ -84,6 +98,9 @@ const ContentWrapper = () => {
 							name="bodyPart"
 							label="Body Part"
 							onChange={handleFormChange}
+							open={selectIsOpen.bodyPart}
+							onOpen={() => handleSelectOpen("bodyPart")}
+							onClose={() => handleSelectClose("bodyPart")}
 						>
 							<MenuItem value={BodyParts.fullBody}>Full Body</MenuItem>
 							<MenuItem value={BodyParts.head}>Head</MenuItem>
@@ -92,22 +109,41 @@ const ContentWrapper = () => {
 							<MenuItem value={BodyParts.feet}>Feet</MenuItem>
 							<MenuItem value={BodyParts.hands}>Hands</MenuItem>
 						</Select>
+						<Button
+							variant="contained"
+							color="primary"
+							sx={{ marginTop: (theme) => theme.spacing(2) }}
+							onClick={() => handleSelectOpen("bodyPart")}
+						>
+							Open Body Part Select
+						</Button>
 					</FormControl>
 					<FormControl fullWidth margin="normal">
 						<InputLabel id="pain-level-label">Pain Level</InputLabel>
 						<Select
 							labelId="pain-level-label"
 							id="pain-level-select"
-							value={formData.painlevel.toString()}
-							name="painlevel"
+							value={formData.painLevel.toString()}
+							name="painLevel"
 							label="Pain Level"
 							onChange={handleFormChange}
+							open={selectIsOpen.painLevel}
+							onOpen={() => handleSelectOpen("painLevel")}
+							onClose={() => handleSelectClose("painLevel")}
 						>
 							<MenuItem value={PainLevels.none}>Itch</MenuItem>
 							<MenuItem value={PainLevels.mild}>Mild Pain</MenuItem>
 							<MenuItem value={PainLevels.moderate}>Moderate Pain</MenuItem>
 							<MenuItem value={PainLevels.severe}>Severe Pain</MenuItem>
 						</Select>
+						<Button
+							variant="contained"
+							color="primary"
+							sx={{ marginTop: (theme) => theme.spacing(2) }}
+							onClick={() => handleSelectOpen("painLevel")}
+						>
+							Open Pain Level Select
+						</Button>
 					</FormControl>
 				</StyledCard>
 			</Box>
