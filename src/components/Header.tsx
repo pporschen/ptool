@@ -20,5 +20,5 @@ const Logo = styled(Box)`
 `;
 
 const StyledAppBar = styled(AppBar)`
-	background-color: ${({ theme }) => theme.palette.background.default};
+	background-color: ${({ theme }) => theme.palette.common.white};
 `;
