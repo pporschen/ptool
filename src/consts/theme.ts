@@ -12,7 +12,7 @@ const theme = createTheme({
 			main: "#ff3333",
 		},
 		background: {
-			default: "#ebe9e9",
+			default: "#FDF8E8",
 		},
 		common: {
 			black: "#000",
@@ -28,7 +28,7 @@ const theme = createTheme({
 				root: {
 					color: "#fff",
 					fontWeight: "bold",
-					minHeight: "3rem",
+					minHeight: "4rem",
 					minWidth: "6rem",
 				},
 			},
