@@ -33,6 +33,13 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiCardActions: {
+			styleOverrides: {
+				root: {
+					justifyContent: "center",
+				},
+			},
+		},
 	},
 });
 
