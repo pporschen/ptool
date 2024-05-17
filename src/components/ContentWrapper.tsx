@@ -4,6 +4,7 @@ import {
 	Card,
 	CardActions,
 	Container,
+	Divider,
 	FormControl,
 	InputLabel,
 	MenuItem,
@@ -71,83 +72,92 @@ const ContentWrapper = () => {
 	};
 
 	return (
-		<Container fixed sx={{ marginTop: (theme) => theme.spacing(3) }}>
-			<Box display="flex" gap={2}>
-				<StyledCard>
-					{perspectives[currentPerspective].svg}
-					<CardActions>
+		<Box
+			sx={{ margin: (theme) => theme.spacing(3), height: () => `calc(100vh - 120px)`, overflow: "auto" }}
+			display="flex"
+			gap={2}
+		>
+			<StyledCard>
+				<Box sx={{ display: "flex", justifyContent: "center" }}>
+					<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 						{perspectives.map((perspective, index) => (
 							<Button
 								key={index}
 								onClick={() => setCurrentPerspective(index)}
 								variant="contained"
 								color={currentPerspective === index ? "secondary" : "primary"}
+								sx={{ marginTop: (theme) => theme.spacing(1) }}
 							>
 								{perspective.name}
 							</Button>
 						))}
-					</CardActions>
-				</StyledCard>
-				<StyledCard>
-					<FormControl fullWidth margin="normal">
-						<InputLabel id="body-part-label">Body Part</InputLabel>
-						<Select
-							labelId="body-part-label"
-							id="body-part-select"
-							value={formData.bodyPart.toString()}
-							name="bodyPart"
-							label="Body Part"
-							onChange={handleFormChange}
-							open={selectIsOpen.bodyPart}
-							onOpen={() => handleSelectOpen("bodyPart")}
-							onClose={() => handleSelectClose("bodyPart")}
-						>
-							<MenuItem value={BodyParts.fullBody}>Full Body</MenuItem>
-							<MenuItem value={BodyParts.head}>Head</MenuItem>
-							<MenuItem value={BodyParts.teeth}>Teeth</MenuItem>
-							<MenuItem value={BodyParts.eye}>Eye</MenuItem>
-							<MenuItem value={BodyParts.feet}>Feet</MenuItem>
-							<MenuItem value={BodyParts.hands}>Hands</MenuItem>
-						</Select>
-						<Button
-							variant="contained"
-							color="primary"
-							sx={{ marginTop: (theme) => theme.spacing(2) }}
-							onClick={() => handleSelectOpen("bodyPart")}
-						>
-							Open Body Part Select
-						</Button>
-					</FormControl>
-					<FormControl fullWidth margin="normal">
-						<InputLabel id="pain-level-label">Pain Level</InputLabel>
-						<Select
-							labelId="pain-level-label"
-							id="pain-level-select"
-							value={formData.painLevel.toString()}
-							name="painLevel"
-							label="Pain Level"
-							onChange={handleFormChange}
-							open={selectIsOpen.painLevel}
-							onOpen={() => handleSelectOpen("painLevel")}
-							onClose={() => handleSelectClose("painLevel")}
-						>
-							<MenuItem value={PainLevels.none}>Itch</MenuItem>
-							<MenuItem value={PainLevels.mild}>Mild Pain</MenuItem>
-							<MenuItem value={PainLevels.moderate}>Moderate Pain</MenuItem>
-							<MenuItem value={PainLevels.severe}>Severe Pain</MenuItem>
-						</Select>
-						<Button
-							variant="contained"
-							color="primary"
-							sx={{ marginTop: (theme) => theme.spacing(2) }}
-							onClick={() => handleSelectOpen("painLevel")}
-						>
-							Open Pain Level Select
-						</Button>
-					</FormControl>
-				</StyledCard>
-			</Box>
-		</Container>
+					</Box>
+					{perspectives[currentPerspective].svg}
+				</Box>
+			</StyledCard>
+			<StyledCard>
+				<FormControl fullWidth margin="normal">
+					<InputLabel id="body-part-label">Body Part</InputLabel>
+					<Select
+						labelId="body-part-label"
+						id="body-part-select"
+						value={formData.bodyPart.toString()}
+						name="bodyPart"
+						label="Body Part"
+						onChange={handleFormChange}
+						open={selectIsOpen.bodyPart}
+						onOpen={() => handleSelectOpen("bodyPart")}
+						onClose={() => handleSelectClose("bodyPart")}
+					>
+						<MenuItem value={BodyParts.fullBody}>Full Body</MenuItem>
+						<MenuItem value={BodyParts.head}>Head</MenuItem>
+						<MenuItem value={BodyParts.teeth}>Teeth</MenuItem>
+						<MenuItem value={BodyParts.eye}>Eye</MenuItem>
+						<MenuItem value={BodyParts.feet}>Feet</MenuItem>
+						<MenuItem value={BodyParts.hands}>Hands</MenuItem>
+					</Select>
+					<Button
+						variant="contained"
+						color="primary"
+						sx={{ marginTop: (theme) => theme.spacing(2) }}
+						onClick={() => handleSelectOpen("bodyPart")}
+					>
+						Open Body Part Select
+					</Button>
+				</FormControl>
+				<FormControl fullWidth margin="normal">
+					<InputLabel id="pain-level-label">Pain Level</InputLabel>
+					<Select
+						labelId="pain-level-label"
+						id="pain-level-select"
+						value={formData.painLevel.toString()}
+						name="painLevel"
+						label="Pain Level"
+						onChange={handleFormChange}
+						open={selectIsOpen.painLevel}
+						onOpen={() => handleSelectOpen("painLevel")}
+						onClose={() => handleSelectClose("painLevel")}
+					>
+						<MenuItem value={PainLevels.none}>Itch</MenuItem>
+						<MenuItem value={PainLevels.mild}>Mild Pain</MenuItem>
+						<MenuItem value={PainLevels.moderate}>Moderate Pain</MenuItem>
+						<MenuItem value={PainLevels.severe}>Severe Pain</MenuItem>
+					</Select>
+					<Button
+						variant="contained"
+						color="primary"
+						sx={{ marginTop: (theme) => theme.spacing(2) }}
+						onClick={() => handleSelectOpen("painLevel")}
+					>
+						Open Pain Level Select
+					</Button>
+				</FormControl>
+				<Divider sx={{ flexGrow: 1 }} />
+				<Button variant="contained" color="primary" sx={{ marginTop: (theme) => theme.spacing(2) }} fullWidth>
+					Start Pointer Capture
+				</Button>
+			</StyledCard>
+		</Box>
 	);
 };
 
@@ -156,5 +166,4 @@ export default ContentWrapper;
 const StyledCard = styled(Card)`
 	padding: ${({ theme }) => theme.spacing(3)};
 	width: 100%;
-	height: 100%;
 `;
