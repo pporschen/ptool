@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#556cd6",
+			main: "#2aaec5",
 		},
 		secondary: {
 			main: "#19857b",
@@ -21,6 +21,18 @@ const theme = createTheme({
 	},
 	typography: {
 		fontFamily: ["Noto Sans", "sans-serif"].join(","),
+	},
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					color: "#fff",
+					fontWeight: "bold",
+					minHeight: "3rem",
+					minWidth: "6rem",
+				},
+			},
+		},
 	},
 });
 
