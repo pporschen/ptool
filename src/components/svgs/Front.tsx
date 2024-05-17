@@ -2,14 +2,16 @@ const Front = () => (
 	<svg
 		width="100%"
 		height="100%"
-		viewBox="0 0 4096 4096"
+		viewBox="0 0 2048 4096"
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"
 		xmlnsXlink="http://www.w3.org/1999/xlink"
+		xmlSpace="preserve"
+		preserveAspectRatio="xMidYMid meet"
 		style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
 	>
-		<g id="Hintergrund" transform="matrix(1,0,0,1,0.5,10)">
-			<use xlinkHref="#_Image1" x="1339" y="168" width="1417px" height="3740px" />
+		<g id="Hintergrund" transform="matrix(1,0,0,1,-2303.5,-1270)">
+			<use xlinkHref="#_Image1" x="2619" y="1448" width="1417px" height="3740px" />
 		</g>
 		<defs>
 			<image
