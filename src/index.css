@@ -33,6 +33,13 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Poetsen One';
+  src: url('../public/fonts/PoetsenOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont,'Noto Sans', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -47,3 +54,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
