@@ -12,13 +12,13 @@ const formatBrowserLanguage = (lng: string) => {
 
 i18n
 	.use(LanguageDetector)
-	.use(initReactI18next) // passes i18n down to react-i18next
+	.use(initReactI18next)
 	.init({
 		resources,
 		fallbackLng: "en",
 		supportedLngs: ["de", "en"],
 		interpolation: {
-			escapeValue: false, // react already safes from xss
+			escapeValue: false,
 		},
 		detection: {
 			order: ["querystring", "cookie", "localStorage", "sessionStorage", "navigator", "htmlTag", "path", "subdomain"],

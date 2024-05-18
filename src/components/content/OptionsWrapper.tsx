@@ -3,11 +3,14 @@ import { t } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
 import PointerMenuItem from "../PointerControlled/PointerMenuItem";
 import { StyledCard } from "./ContentWrapper";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, Dispatch, SetStateAction } from "react";
 import { usePointerInputStatusStore } from "../../stores/PointerInputStatusStore";
 
 type OptionsWrapperProps = {
 	pointerInputIsEnabled: boolean;
+	pointerCaptureIsEnabled: boolean;
+	setPointerCaptureIsEnabled: Dispatch<SetStateAction<boolean>>;
+	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
 };
 
 enum PainLevels {
@@ -31,7 +34,12 @@ type FormData = {
 	bodyPart: BodyParts;
 };
 
-const OptionsWrapper = ({ pointerInputIsEnabled }: OptionsWrapperProps) => {
+const OptionsWrapper = ({
+	pointerInputIsEnabled,
+	setPointerCaptureIsEnabled,
+	pointerCaptureIsEnabled,
+	setDots,
+}: OptionsWrapperProps) => {
 	const [formData, setFormData] = useState<FormData>({ painLevel: PainLevels.none, bodyPart: BodyParts.fullBody });
 	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
 	const setPointerInputIsEnabled = usePointerInputStatusStore((state) => state.setPointerInputIsEnabled);
@@ -61,6 +69,14 @@ const OptionsWrapper = ({ pointerInputIsEnabled }: OptionsWrapperProps) => {
 	const handleMenuItemAction = (name: string, value: PainLevels | BodyParts) => {
 		setFormData({ ...formData, [name]: value });
 		handleSelectClose(name);
+	};
+
+	const handlePointerCaptureToggle = () => {
+		setPointerCaptureIsEnabled(!pointerCaptureIsEnabled);
+	};
+
+	const handleResetDots = () => {
+		setDots({});
 	};
 
 	return (
@@ -169,9 +185,20 @@ const OptionsWrapper = ({ pointerInputIsEnabled }: OptionsWrapperProps) => {
 				color="primary"
 				sx={{ marginTop: (theme) => theme.spacing(2) }}
 				fullWidth
-				onClick={() => console.log(formData)}
+				onClick={handleResetDots}
 			>
-				{t("Start Pointer Capture")}
+				{t("Reset Points")}
+			</PointerButton>
+
+			<PointerButton
+				pointerInputIsEnabled={pointerInputIsEnabled}
+				variant="contained"
+				color="primary"
+				sx={{ marginTop: (theme) => theme.spacing(1) }}
+				fullWidth
+				onClick={handlePointerCaptureToggle}
+			>
+				{pointerCaptureIsEnabled ? t("Stop Pointer Capture") : t("Start Pointer Capture")}
 			</PointerButton>
 
 			<PointerButton

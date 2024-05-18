@@ -1,7 +1,7 @@
 import { DOT_SIZE } from "../../config/consts";
 import { BodySVGProps } from "./types";
 
-const Right = ({ dot, onClick }: BodySVGProps) => (
+const Right = ({ dot, onClick, onMouseEnter, onMouseMove }: BodySVGProps) => (
 	<svg
 		width="100%"
 		height="100%"
@@ -12,6 +12,8 @@ const Right = ({ dot, onClick }: BodySVGProps) => (
 		xmlSpace="preserve"
 		style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
 		onClick={onClick}
+		onMouseEnter={onMouseEnter}
+		onMouseMove={onMouseMove}
 	>
 		<g id="Hintergrund" transform="matrix(0.76805,0,0,0.76805,-1312.28,-1539.95)">
 			<use xlinkHref="#_Image1" x="2557" y="2254" width="1053px" height="4822px" />

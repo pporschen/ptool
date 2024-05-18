@@ -7,7 +7,6 @@ import i18n from "./i18n";
 
 function App() {
 	const [language, setLanguage] = useState(i18n.language);
-	console.log(language);
 
 	return (
 		<ThemeProvider theme={theme}>

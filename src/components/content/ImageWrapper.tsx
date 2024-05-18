@@ -5,11 +5,17 @@ import Back from "../svgs/Back";
 import Front from "../svgs/Front";
 import Left from "../svgs/Left";
 import Right from "../svgs/Right";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { StyledCard } from "./ContentWrapper";
+import { set } from "lodash";
+import { POINTER_DELAY } from "../../config/consts";
 
 type ImageWrapperProps = {
 	pointerInputIsEnabled: boolean;
+	pointerCaptureIsEnabled: boolean;
+	setPointerCaptureIsEnabled: Dispatch<SetStateAction<boolean>>;
+	dots: Record<string, { x: number; y: number }>;
+	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
 };
 
 const perspectives = [
@@ -18,21 +24,56 @@ const perspectives = [
 	{ name: "Back", svg: Back, id: "back" },
 	{ name: "Left", svg: Left, id: "left" },
 ];
-type Dot = { x: number; y: number };
-type DotSource = string;
 
-const ImageWrapper = ({ pointerInputIsEnabled }: ImageWrapperProps) => {
+const ImageWrapper = ({
+	pointerInputIsEnabled,
+	pointerCaptureIsEnabled,
+	setPointerCaptureIsEnabled,
+	dots,
+	setDots,
+}: ImageWrapperProps) => {
 	const [currentPerspective, setCurrentPerspective] = useState(0);
-	const [dots, setDots] = useState<Record<DotSource, Dot>>({});
-	const currentPerspectiveId = perspectives[currentPerspective].id;
 
-	const handleBodySVGClick = (dotSource: DotSource) => (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+	const currentPerspectiveId = perspectives[currentPerspective].id;
+	const timer = useRef<NodeJS.Timeout | null>(null);
+	const mousePositionRef = useRef<{ x: number; y: number } | null>(null);
+
+	const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
 		const svg = event.currentTarget;
 		const pt = svg.createSVGPoint();
 		pt.x = event.clientX;
 		pt.y = event.clientY;
 		const svgP = pt.matrixTransform(svg.getScreenCTM()?.inverse());
-		setDots((prev) => ({ ...prev, [dotSource]: { x: svgP.x, y: svgP.y } }));
+		mousePositionRef.current = { x: svgP.x, y: svgP.y };
+	};
+
+	const handleBodySVGClick = () => {
+		console.log({ mousePosition: mousePositionRef.current });
+		if (!mousePositionRef.current) return;
+		setDots((prev) => ({
+			...prev,
+			[currentPerspectiveId]: { x: mousePositionRef.current!.x, y: mousePositionRef.current!.y },
+		}));
+	};
+
+	const handleActivePointerCaptureEntry = () => {
+		if (pointerCaptureIsEnabled) {
+			if (timer.current) {
+				clearTimeout(timer.current);
+				timer.current = null;
+			}
+
+			timer.current = setTimeout(handleBodySVGClick, POINTER_DELAY);
+		}
+	};
+
+	const handleActivePointerCaptureExit = () => {
+		if (timer.current) {
+			clearTimeout(timer.current);
+			timer.current = null;
+		}
+		//
+		setPointerCaptureIsEnabled(false);
 	};
 
 	return (
@@ -52,10 +93,22 @@ const ImageWrapper = ({ pointerInputIsEnabled }: ImageWrapperProps) => {
 						</PointerButton>
 					))}
 				</Box>
-				<Box sx={{ justifyContent: "center", alignItems: "center", flexGrow: 1, height: "800px", width: "400px" }}>
+				<Box
+					sx={{
+						justifyContent: "center",
+						alignItems: "center",
+						flexGrow: 1,
+						height: "800px",
+						width: "400px",
+						cursor: "crosshair",
+					}}
+				>
 					{perspectives[currentPerspective].svg({
 						dot: dots[currentPerspectiveId],
-						onClick: handleBodySVGClick(currentPerspectiveId),
+						onClick: handleBodySVGClick,
+						onMouseEnter: handleActivePointerCaptureEntry,
+						onMouseMove: handleMouseMove,
+						onMouseLeave: handleActivePointerCaptureExit,
 					})}
 				</Box>
 			</Box>
