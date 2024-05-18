@@ -3,11 +3,11 @@ import { DWELLING_DELAY, DWELLING_TIME_LIMIT, REFRESH_RATE, ACTION_DELAY } from 
 
 const dwellingTimeToProgress = (dwellingTime: number) => ((dwellingTime - DWELLING_DELAY) / DWELLING_TIME_LIMIT) * 100;
 type PointerControlProps = {
-	onClick: () => void;
+	action: () => void;
 	pointerInputIsEnabled: boolean;
 };
 
-const usePointerControl = ({ onClick, pointerInputIsEnabled }: PointerControlProps) => {
+const usePointerControl = ({ action, pointerInputIsEnabled }: PointerControlProps) => {
 	const [dwellingTime, setDwellingTime] = useState(0);
 	const [isDwelling, setIsDwelling] = useState(false);
 	const dwellingDelayPassed = dwellingTime >= DWELLING_DELAY;
@@ -31,7 +31,7 @@ const usePointerControl = ({ onClick, pointerInputIsEnabled }: PointerControlPro
 			}, REFRESH_RATE);
 			setIsDwelling(true);
 			actionTimeout.current = setTimeout(() => {
-				onClick();
+				action();
 				setIsDwelling(false);
 			}, DWELLING_TIME_LIMIT + DWELLING_DELAY + ACTION_DELAY);
 		}
