@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import theme from "./consts/theme";
+import theme from "./config/theme";
 import Header from "./components/Header";
 import ContentWrapper from "./components/ContentWrapper";
 import { useEffect, useState } from "react";

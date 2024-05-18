@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import LanguageSelect from "./LanguageSelect";
 import { Dispatch, SetStateAction } from "react";
-import theme from "../consts/theme";
+import theme from "../config/theme";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
 import PointerButton from "./PointerButton";
 import { t } from "i18next";

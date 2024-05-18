@@ -3,10 +3,10 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#2aaec5",
+			main: "#3E5E84",
 		},
 		secondary: {
-			main: "#19857b",
+			main: "#c24c71",
 		},
 		error: {
 			main: "#ff3333",
@@ -30,6 +30,10 @@ const theme = createTheme({
 					fontWeight: "bold",
 					minHeight: "4rem",
 					minWidth: "6rem",
+					boxShadow: "none",
+					"&:hover": {
+						boxShadow: "none",
+					},
 				},
 			},
 		},
@@ -37,6 +41,13 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					justifyContent: "center",
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					minHeight: "4rem",
 				},
 			},
 		},
