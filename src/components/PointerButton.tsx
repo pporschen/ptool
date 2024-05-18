@@ -1,10 +1,8 @@
 import { Button, ButtonProps, LinearProgress } from "@mui/material";
-import { use } from "i18next";
-import { set } from "lodash";
 import { useRef, useState } from "react";
 
-type GazeButtonProps = {
-	gazeInputIsEnabled: boolean;
+type PointerButtonProps = {
+	pointerInputIsEnabled: boolean;
 	onClick: () => void;
 } & ButtonProps;
 
@@ -14,7 +12,7 @@ const DWELLING_DELAY = 500;
 const ACTION_DELAY = 500;
 const dwellingTimeToProgress = (dwellingTime: number) => ((dwellingTime - DWELLING_DELAY) / DWELLING_TIME_LIMIT) * 100;
 
-const GazeButton = ({ gazeInputIsEnabled, onClick, ...props }: GazeButtonProps) => {
+const PointerButton = ({ pointerInputIsEnabled, onClick, ...props }: PointerButtonProps) => {
 	const [dwellingTime, setDwellingTime] = useState(0);
 	const [isDwelling, setIsDwelling] = useState(false);
 	const dwellingDelayPassed = dwellingTime >= DWELLING_DELAY;
@@ -22,12 +20,12 @@ const GazeButton = ({ gazeInputIsEnabled, onClick, ...props }: GazeButtonProps) 
 	const timer = useRef<NodeJS.Timeout | null>(null);
 	const actionTimeout = useRef<NodeJS.Timeout | null>(null);
 
-	const handleGazeEntry = () => {
+	const handlePointerEntry = () => {
 		setDwellingTime(0);
 		if (timer.current) {
 			clearInterval(timer.current);
 		}
-		if (gazeInputIsEnabled) {
+		if (pointerInputIsEnabled) {
 			timer.current = setInterval(() => {
 				setDwellingTime((prev) => {
 					const next = prev + REFRESH_RATE;
@@ -42,8 +40,8 @@ const GazeButton = ({ gazeInputIsEnabled, onClick, ...props }: GazeButtonProps) 
 		}
 	};
 
-	const handleGazeLeave = () => {
-		if (gazeInputIsEnabled) {
+	const handlePointerLeave = () => {
+		if (pointerInputIsEnabled) {
 			if (timer.current) {
 				clearInterval(timer.current);
 			}
@@ -56,7 +54,7 @@ const GazeButton = ({ gazeInputIsEnabled, onClick, ...props }: GazeButtonProps) 
 	};
 
 	return (
-		<Button onClick={onClick} onMouseEnter={handleGazeEntry} onMouseLeave={handleGazeLeave} {...props}>
+		<Button onClick={onClick} onMouseEnter={handlePointerEntry} onMouseLeave={handlePointerLeave} {...props}>
 			{isDwelling && dwellingDelayPassed && (
 				<LinearProgress
 					variant="determinate"
@@ -70,4 +68,4 @@ const GazeButton = ({ gazeInputIsEnabled, onClick, ...props }: GazeButtonProps) 
 	);
 };
 
-export default GazeButton;
+export default PointerButton;

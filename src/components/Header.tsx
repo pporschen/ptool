@@ -2,6 +2,9 @@ import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import LanguageSelect from "./LanguageSelect";
 import { Dispatch, SetStateAction } from "react";
 import theme from "../consts/theme";
+import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
+import PointerButton from "./PointerButton";
+import { t } from "i18next";
 type HeaderProps = {
 	language: string;
 	setLanguage: Dispatch<SetStateAction<string>>;
@@ -12,9 +15,6 @@ const Header = ({ language, setLanguage }: HeaderProps) => {
 			<Toolbar sx={{ justifyContent: "space-between" }}>
 				<Logo>painpointer.io</Logo>
 				<Box display="flex" alignItems="baseline">
-					<Button variant="contained" color="secondary" sx={{ margin: (theme) => theme.spacing(1), boxShadow: "none" }}>
-						Enable Gaze Input
-					</Button>
 					<LanguageSelect language={language} setLanguage={setLanguage} />
 				</Box>
 			</Toolbar>

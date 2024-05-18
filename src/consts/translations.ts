@@ -21,6 +21,8 @@ const resources = {
 			Eye: "Eye",
 			Feet: "Feet",
 			Hands: "Hands",
+			"Disable Pointer Input": "Disable Pointer Input",
+			"Enable Pointer Input": "Enable Pointer Input",
 		},
 	},
 	de: {
@@ -45,6 +47,8 @@ const resources = {
 			Eye: "Auge",
 			Feet: "Füße",
 			Hands: "Hände",
+			"Disable Pointer Input": "Pointer-Steuerung deaktivieren",
+			"Enable Pointer Input": "Pointer-Steuerung aktivieren",
 		},
 	},
 };
