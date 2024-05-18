@@ -18,6 +18,8 @@ import Left from "./svgs/Left";
 import Right from "./svgs/Right";
 import { ReactNode, useState } from "react";
 import { t } from "i18next";
+import GazeButton from "./GazeButton";
+import { useGazeInputStatusStore } from "../stores/GazeInputStatusStore";
 
 enum PainLevels {
 	none = 0,
@@ -44,6 +46,7 @@ const ContentWrapper = () => {
 	const [currentPerspective, setCurrentPerspective] = useState(0);
 	const [formData, setFormData] = useState<FormData>({ painLevel: PainLevels.none, bodyPart: BodyParts.fullBody });
 	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
+	const gazeInputIsEnabled = useGazeInputStatusStore((state) => state.gazeInputIsEnabled);
 
 	const perspectives = [
 		{ name: "Front", svg: <Front /> },
@@ -82,7 +85,8 @@ const ContentWrapper = () => {
 				<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 					<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 						{perspectives.map((perspective, index) => (
-							<Button
+							<GazeButton
+								gazeInputIsEnabled={gazeInputIsEnabled}
 								key={index}
 								onClick={() => setCurrentPerspective(index)}
 								variant="contained"
@@ -90,7 +94,7 @@ const ContentWrapper = () => {
 								sx={{ marginTop: (theme) => theme.spacing(1) }}
 							>
 								{t(perspective.name)}
-							</Button>
+							</GazeButton>
 						))}
 					</Box>
 					<Box sx={{ justifyContent: "center", alignItems: "center", flexGrow: 1, height: "700px" }}>
@@ -99,6 +103,15 @@ const ContentWrapper = () => {
 				</Box>
 			</StyledCard>
 			<StyledCard sx={{ width: "400px" }}>
+				<GazeButton
+					gazeInputIsEnabled={gazeInputIsEnabled}
+					variant="contained"
+					color="primary"
+					sx={{ marginButtom: (theme) => theme.spacing(3) }}
+					onClick={() => handleSelectOpen("bodyPart")}
+				>
+					{t("Open Body Part Select")}
+				</GazeButton>
 				<FormControl fullWidth margin="normal">
 					<InputLabel id="body-part-label">{t("Body Part")}</InputLabel>
 					<Select
@@ -119,15 +132,16 @@ const ContentWrapper = () => {
 						<MenuItem value={BodyParts.feet}>{t("Feet")}</MenuItem>
 						<MenuItem value={BodyParts.hands}>{t("Hands")}</MenuItem>
 					</Select>
-					<Button
-						variant="contained"
-						color="primary"
-						sx={{ marginTop: (theme) => theme.spacing(2) }}
-						onClick={() => handleSelectOpen("bodyPart")}
-					>
-						{t("Open Body Part Select")}
-					</Button>
 				</FormControl>
+				<GazeButton
+					gazeInputIsEnabled={gazeInputIsEnabled}
+					variant="contained"
+					color="primary"
+					sx={{ marginTop: (theme) => theme.spacing(2) }}
+					onClick={() => handleSelectOpen("painLevel")}
+				>
+					{t("Open Pain Level Select")}
+				</GazeButton>
 				<FormControl fullWidth margin="normal">
 					<InputLabel id="pain-level-label">{t("Pain Level")}</InputLabel>
 					<Select
@@ -146,22 +160,28 @@ const ContentWrapper = () => {
 						<MenuItem value={PainLevels.moderate}>{t("Moderate Pain")}</MenuItem>
 						<MenuItem value={PainLevels.severe}>{t("Severe Pain")}</MenuItem>
 					</Select>
-					<Button
-						variant="contained"
-						color="primary"
-						sx={{ marginTop: (theme) => theme.spacing(2) }}
-						onClick={() => handleSelectOpen("painLevel")}
-					>
-						{t("Open Pain Level Select")}
-					</Button>
 				</FormControl>
 				<Divider sx={{ flexGrow: 1 }} />
-				<Button variant="contained" color="primary" sx={{ marginTop: (theme) => theme.spacing(2) }} fullWidth>
+				<GazeButton
+					gazeInputIsEnabled={gazeInputIsEnabled}
+					variant="contained"
+					color="primary"
+					sx={{ marginTop: (theme) => theme.spacing(2) }}
+					fullWidth
+					onClick={() => console.log(formData)}
+				>
 					{t("Start Pointer Capture")}
-				</Button>
-				<Button variant="contained" color="primary" sx={{ marginTop: (theme) => theme.spacing(2) }} fullWidth>
+				</GazeButton>
+				<GazeButton
+					gazeInputIsEnabled={gazeInputIsEnabled}
+					onClick={() => console.log("Export PDF")}
+					variant="contained"
+					color="primary"
+					sx={{ marginTop: (theme) => theme.spacing(2) }}
+					fullWidth
+				>
 					{t("Export PDF")}
-				</Button>
+				</GazeButton>
 			</StyledCard>
 		</Box>
 	);
