@@ -1,9 +1,17 @@
-import { AppBar, Box, styled } from "@mui/material";
-
-const Header = () => {
+import { AppBar, Box, Toolbar, styled } from "@mui/material";
+import LanguageSelect from "./LanguageSelect";
+import { Dispatch, SetStateAction } from "react";
+type HeaderProps = {
+	language: string;
+	setLanguage: Dispatch<SetStateAction<string>>;
+};
+const Header = ({ language, setLanguage }: HeaderProps) => {
 	return (
 		<StyledAppBar position="static">
-			<Logo>painpointer.io</Logo>
+			<Toolbar sx={{ justifyContent: "space-between" }}>
+				<Logo>painpointer.io</Logo>
+				<LanguageSelect language={language} setLanguage={setLanguage} />
+			</Toolbar>
 		</StyledAppBar>
 	);
 };
