@@ -51,6 +51,14 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					minHeight: "4rem !important",
+					justifyContent: "space-between",
+				},
+			},
+		},
 	},
 });
 
