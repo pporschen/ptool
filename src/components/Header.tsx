@@ -3,7 +3,7 @@ import LanguageSelect from "./LanguageSelect";
 import { Dispatch, SetStateAction } from "react";
 import theme from "../config/theme";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
-import PointerButton from "./PointerButton";
+import PointerButton from "./PointerControlled/PointerButton";
 import { t } from "i18next";
 type HeaderProps = {
 	language: string;
@@ -27,7 +27,8 @@ export default Header;
 const Logo = styled(Box)`
 	font-size: 1.5em;
 	font-family: "Poetsen One", sans-serif;
-	background: linear-gradient(to right, #20b2aa, #e303cd);
+	background: ${({ theme }) =>
+		`linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`};
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	margin: ${({ theme }) => theme.spacing(2)};

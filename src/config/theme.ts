@@ -3,16 +3,16 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#3E5E84",
+			main: "#6897bb",
 		},
 		secondary: {
-			main: "#c24c71",
+			main: "#bb6897",
 		},
 		error: {
 			main: "#ff3333",
 		},
 		background: {
-			default: "#FDF8E8",
+			default: "#f5f5f5",
 		},
 		common: {
 			black: "#000",
@@ -56,6 +56,13 @@ const theme = createTheme({
 				root: {
 					minHeight: "4rem !important",
 					justifyContent: "space-between",
+				},
+			},
+		},
+		MuiCard: {
+			styleOverrides: {
+				root: {
+					boxShadow: "none",
 				},
 			},
 		},
