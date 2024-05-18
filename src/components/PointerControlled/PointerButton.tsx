@@ -1,6 +1,6 @@
 import { Button, ButtonProps, LinearProgress } from "@mui/material";
 import { useRef, useState } from "react";
-import usePointerControl from "../hooks/usePointerControl";
+import usePointerControl from "../../hooks/usePointerControl";
 
 type PointerButtonProps = {
 	pointerInputIsEnabled: boolean;
@@ -9,7 +9,7 @@ type PointerButtonProps = {
 
 const PointerButton = ({ pointerInputIsEnabled, onClick, ...props }: PointerButtonProps) => {
 	const { isDwelling, dwellingDelayPassed, handlePointerEntry, handlePointerLeave, dwellingProgress } =
-		usePointerControl({ onClick, pointerInputIsEnabled });
+		usePointerControl({ action: onClick, pointerInputIsEnabled });
 
 	return (
 		<Button onClick={onClick} onMouseEnter={handlePointerEntry} onMouseLeave={handlePointerLeave} {...props}>
