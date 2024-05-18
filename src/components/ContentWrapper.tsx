@@ -17,7 +17,7 @@ import Back from "./svgs/Back";
 import Left from "./svgs/Left";
 import Right from "./svgs/Right";
 import { ReactNode, useState } from "react";
-import theme from "../consts/theme";
+import { t } from "i18next";
 
 enum PainLevels {
 	none = 0,
@@ -76,9 +76,10 @@ const ContentWrapper = () => {
 			sx={{ margin: (theme) => theme.spacing(3), height: () => `calc(100vh - 120px)`, overflow: "auto" }}
 			display="flex"
 			gap={2}
+			justifyContent={"center"}
 		>
-			<StyledCard>
-				<Box sx={{ display: "flex", justifyContent: "center" }}>
+			<StyledCard sx={{ width: "600px" }}>
+				<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 					<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 						{perspectives.map((perspective, index) => (
 							<Button
@@ -88,33 +89,35 @@ const ContentWrapper = () => {
 								color={currentPerspective === index ? "secondary" : "primary"}
 								sx={{ marginTop: (theme) => theme.spacing(1) }}
 							>
-								{perspective.name}
+								{t(perspective.name)}
 							</Button>
 						))}
 					</Box>
-					{perspectives[currentPerspective].svg}
+					<Box sx={{ justifyContent: "center", alignItems: "center", flexGrow: 1, height: "700px" }}>
+						{perspectives[currentPerspective].svg}
+					</Box>
 				</Box>
 			</StyledCard>
-			<StyledCard>
+			<StyledCard sx={{ width: "400px" }}>
 				<FormControl fullWidth margin="normal">
-					<InputLabel id="body-part-label">Body Part</InputLabel>
+					<InputLabel id="body-part-label">{t("Body Part")}</InputLabel>
 					<Select
 						labelId="body-part-label"
 						id="body-part-select"
 						value={formData.bodyPart.toString()}
 						name="bodyPart"
-						label="Body Part"
+						label={t("Body Part")}
 						onChange={handleFormChange}
 						open={selectIsOpen.bodyPart}
 						onOpen={() => handleSelectOpen("bodyPart")}
 						onClose={() => handleSelectClose("bodyPart")}
 					>
-						<MenuItem value={BodyParts.fullBody}>Full Body</MenuItem>
-						<MenuItem value={BodyParts.head}>Head</MenuItem>
-						<MenuItem value={BodyParts.teeth}>Teeth</MenuItem>
-						<MenuItem value={BodyParts.eye}>Eye</MenuItem>
-						<MenuItem value={BodyParts.feet}>Feet</MenuItem>
-						<MenuItem value={BodyParts.hands}>Hands</MenuItem>
+						<MenuItem value={BodyParts.fullBody}>{t("Full Body")}</MenuItem>
+						<MenuItem value={BodyParts.head}>{t("Head")}</MenuItem>
+						<MenuItem value={BodyParts.teeth}>{t("Teeth")}</MenuItem>
+						<MenuItem value={BodyParts.eye}>{t("Eye")}</MenuItem>
+						<MenuItem value={BodyParts.feet}>{t("Feet")}</MenuItem>
+						<MenuItem value={BodyParts.hands}>{t("Hands")}</MenuItem>
 					</Select>
 					<Button
 						variant="contained"
@@ -122,26 +125,26 @@ const ContentWrapper = () => {
 						sx={{ marginTop: (theme) => theme.spacing(2) }}
 						onClick={() => handleSelectOpen("bodyPart")}
 					>
-						Open Body Part Select
+						{t("Open Body Part Select")}
 					</Button>
 				</FormControl>
 				<FormControl fullWidth margin="normal">
-					<InputLabel id="pain-level-label">Pain Level</InputLabel>
+					<InputLabel id="pain-level-label">{t("Pain Level")}</InputLabel>
 					<Select
 						labelId="pain-level-label"
 						id="pain-level-select"
 						value={formData.painLevel.toString()}
 						name="painLevel"
-						label="Pain Level"
+						label={t("Pain Level")}
 						onChange={handleFormChange}
 						open={selectIsOpen.painLevel}
 						onOpen={() => handleSelectOpen("painLevel")}
 						onClose={() => handleSelectClose("painLevel")}
 					>
-						<MenuItem value={PainLevels.none}>Itch</MenuItem>
-						<MenuItem value={PainLevels.mild}>Mild Pain</MenuItem>
-						<MenuItem value={PainLevels.moderate}>Moderate Pain</MenuItem>
-						<MenuItem value={PainLevels.severe}>Severe Pain</MenuItem>
+						<MenuItem value={PainLevels.none}>{t("Itch")}</MenuItem>
+						<MenuItem value={PainLevels.mild}>{t("Mild Pain")}</MenuItem>
+						<MenuItem value={PainLevels.moderate}>{t("Moderate Pain")}</MenuItem>
+						<MenuItem value={PainLevels.severe}>{t("Severe Pain")}</MenuItem>
 					</Select>
 					<Button
 						variant="contained"
@@ -149,12 +152,15 @@ const ContentWrapper = () => {
 						sx={{ marginTop: (theme) => theme.spacing(2) }}
 						onClick={() => handleSelectOpen("painLevel")}
 					>
-						Open Pain Level Select
+						{t("Open Pain Level Select")}
 					</Button>
 				</FormControl>
 				<Divider sx={{ flexGrow: 1 }} />
 				<Button variant="contained" color="primary" sx={{ marginTop: (theme) => theme.spacing(2) }} fullWidth>
-					Start Pointer Capture
+					{t("Start Pointer Capture")}
+				</Button>
+				<Button variant="contained" color="primary" sx={{ marginTop: (theme) => theme.spacing(2) }} fullWidth>
+					{t("Export PDF")}
 				</Button>
 			</StyledCard>
 		</Box>
@@ -165,5 +171,6 @@ export default ContentWrapper;
 
 const StyledCard = styled(Card)`
 	padding: ${({ theme }) => theme.spacing(3)};
-	width: 100%;
+	display: flex;
+	flex-direction: column;
 `;
