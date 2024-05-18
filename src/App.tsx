@@ -19,7 +19,7 @@ function App() {
 				}}
 			>
 				<CssBaseline />
-				<Logo>painpointer.io</Logo>
+				<Logo>painpointer.info</Logo>
 				<ContentWrapper />
 			</Container>
 		</ThemeProvider>
