@@ -18,8 +18,9 @@ import Left from "./svgs/Left";
 import Right from "./svgs/Right";
 import { ReactNode, useState } from "react";
 import { t } from "i18next";
-import PointerButton from "./PointerButton";
+import PointerButton from "./PointerControlled/PointerButton";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
+import PointerMenuItem from "./PointerControlled/PointerMenuItem";
 
 enum PainLevels {
 	none = 0,
@@ -78,6 +79,11 @@ const ContentWrapper = () => {
 		setSelectIsOpen({ ...selectIsOpen, [name]: false });
 	};
 
+	const handleMenuItemAction = (name: string, value: PainLevels | BodyParts) => {
+		setFormData({ ...formData, [name]: value });
+		handleSelectClose(name);
+	};
+
 	return (
 		<Box
 			sx={{ margin: (theme) => theme.spacing(3), height: () => `calc(100vh - 120px)`, overflow: "auto" }}
@@ -129,12 +135,27 @@ const ContentWrapper = () => {
 						onOpen={() => handleSelectOpen("bodyPart")}
 						onClose={() => handleSelectClose("bodyPart")}
 					>
-						<MenuItem value={BodyParts.fullBody}>{t("Full Body")}</MenuItem>
-						<MenuItem value={BodyParts.head}>{t("Head")}</MenuItem>
-						<MenuItem value={BodyParts.teeth}>{t("Teeth")}</MenuItem>
-						<MenuItem value={BodyParts.eye}>{t("Eye")}</MenuItem>
-						<MenuItem value={BodyParts.feet}>{t("Feet")}</MenuItem>
-						<MenuItem value={BodyParts.hands}>{t("Hands")}</MenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("bodyPart", BodyParts.fullBody)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={BodyParts.fullBody}
+						>
+							{t("Full Body")}
+						</PointerMenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("bodyPart", BodyParts.head)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={BodyParts.head}
+						>
+							{t("Head")}
+						</PointerMenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("bodyPart", BodyParts.teeth)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={BodyParts.teeth}
+						>
+							{t("Teeth")}
+						</PointerMenuItem>
 					</Select>
 				</FormControl>
 				<PointerButton
@@ -159,10 +180,34 @@ const ContentWrapper = () => {
 						onOpen={() => handleSelectOpen("painLevel")}
 						onClose={() => handleSelectClose("painLevel")}
 					>
-						<MenuItem value={PainLevels.none}>{t("Itch")}</MenuItem>
-						<MenuItem value={PainLevels.mild}>{t("Mild Pain")}</MenuItem>
-						<MenuItem value={PainLevels.moderate}>{t("Moderate Pain")}</MenuItem>
-						<MenuItem value={PainLevels.severe}>{t("Severe Pain")}</MenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("painLevel", PainLevels.none)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={PainLevels.none}
+						>
+							{t("Itch")}
+						</PointerMenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("painLevel", PainLevels.mild)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={PainLevels.mild}
+						>
+							{t("Mild Pain")}
+						</PointerMenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("painLevel", PainLevels.moderate)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={PainLevels.moderate}
+						>
+							{t("Moderate Pain")}
+						</PointerMenuItem>
+						<PointerMenuItem
+							action={() => handleMenuItemAction("painLevel", PainLevels.severe)}
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							value={PainLevels.severe}
+						>
+							{t("Severe Pain")}
+						</PointerMenuItem>
 					</Select>
 				</FormControl>
 				<Divider sx={{ flexGrow: 1 }} />
