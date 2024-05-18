@@ -23,6 +23,8 @@ const resources = {
 			Hands: "Hands",
 			"Disable Pointer Input": "Disable Pointer Input",
 			"Enable Pointer Input": "Enable Pointer Input",
+			"Reset Points": "Reset Points",
+			"Stop Pointer Capture": "Stop Pointer Capture",
 		},
 	},
 	de: {
@@ -49,6 +51,8 @@ const resources = {
 			Hands: "Hände",
 			"Disable Pointer Input": "Pointer-Steuerung deaktivieren",
 			"Enable Pointer Input": "Pointer-Steuerung aktivieren",
+			"Reset Points": "Markierungen zurücksetzen",
+			"Stop Pointer Capture": "Pointer-Erfassung stoppen",
 		},
 	},
 };
