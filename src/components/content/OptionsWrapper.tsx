@@ -5,33 +5,15 @@ import PointerMenuItem from "../PointerControlled/PointerMenuItem";
 import { StyledCard } from "./ContentWrapper";
 import { useState, ReactNode, Dispatch, SetStateAction } from "react";
 import { usePointerInputStatusStore } from "../../stores/PointerInputStatusStore";
+import { BodyParts, FormData, PainLevels } from "./types";
 
 type OptionsWrapperProps = {
 	pointerInputIsEnabled: boolean;
 	pointerCaptureIsEnabled: boolean;
 	setPointerCaptureIsEnabled: Dispatch<SetStateAction<boolean>>;
 	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
-};
-
-enum PainLevels {
-	none = 0,
-	mild = 1,
-	moderate = 2,
-	severe = 3,
-}
-
-enum BodyParts {
-	fullBody,
-	head,
-	teeth,
-	eye,
-	feet,
-	hands,
-}
-
-type FormData = {
-	painLevel: PainLevels;
-	bodyPart: BodyParts;
+	formData: FormData;
+	setFormData: Dispatch<SetStateAction<FormData>>;
 };
 
 const OptionsWrapper = ({
@@ -39,8 +21,9 @@ const OptionsWrapper = ({
 	setPointerCaptureIsEnabled,
 	pointerCaptureIsEnabled,
 	setDots,
+	formData,
+	setFormData,
 }: OptionsWrapperProps) => {
-	const [formData, setFormData] = useState<FormData>({ painLevel: PainLevels.none, bodyPart: BodyParts.fullBody });
 	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
 	const setPointerInputIsEnabled = usePointerInputStatusStore((state) => state.setPointerInputIsEnabled);
 	const handlePointerInputToggle = () => {
@@ -103,27 +86,18 @@ const OptionsWrapper = ({
 					onOpen={() => handleSelectOpen("bodyPart")}
 					onClose={() => handleSelectClose("bodyPart")}
 				>
-					<PointerMenuItem
-						action={() => handleMenuItemAction("bodyPart", BodyParts.fullBody)}
-						pointerInputIsEnabled={pointerInputIsEnabled}
-						value={BodyParts.fullBody}
-					>
-						{t("Full Body")}
-					</PointerMenuItem>
-					<PointerMenuItem
-						action={() => handleMenuItemAction("bodyPart", BodyParts.head)}
-						pointerInputIsEnabled={pointerInputIsEnabled}
-						value={BodyParts.head}
-					>
-						{t("Head")}
-					</PointerMenuItem>
-					<PointerMenuItem
-						action={() => handleMenuItemAction("bodyPart", BodyParts.teeth)}
-						pointerInputIsEnabled={pointerInputIsEnabled}
-						value={BodyParts.teeth}
-					>
-						{t("Teeth")}
-					</PointerMenuItem>
+					{Object.values(BodyParts).map((value) => {
+						return (
+							<PointerMenuItem
+								action={() => handleMenuItemAction("bodyPart", value)}
+								pointerInputIsEnabled={pointerInputIsEnabled}
+								value={value}
+								key={value}
+							>
+								{t(value)}
+							</PointerMenuItem>
+						);
+					})}
 				</Select>
 			</FormControl>
 			<PointerButton

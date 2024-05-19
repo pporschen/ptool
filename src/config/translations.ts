@@ -25,6 +25,9 @@ const resources = {
 			"Enable Pointer Input": "Enable Pointer Input",
 			"Reset Points": "Reset Points",
 			"Stop Pointer Capture": "Stop Pointer Capture",
+			female: "Full Body Female",
+			male: "Full Body Male",
+			head: "Head",
 		},
 	},
 	de: {
@@ -53,6 +56,9 @@ const resources = {
 			"Enable Pointer Input": "Pointer-Steuerung aktivieren",
 			"Reset Points": "Markierungen zurücksetzen",
 			"Stop Pointer Capture": "Pointer-Erfassung stoppen",
+			female: "Gesamter Körper weiblich",
+			male: "Gesamter Körper männlich",
+			head: "Kopf",
 		},
 	},
 };

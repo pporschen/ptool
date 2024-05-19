@@ -5,10 +5,13 @@ import Back from "../svgs/Back";
 import Front from "../svgs/Front";
 import Left from "../svgs/Left";
 import Right from "../svgs/Right";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import HeadFront from "../svgs/Head/HeadFront";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { StyledCard } from "./ContentWrapper";
-import { set } from "lodash";
 import { POINTER_DELAY } from "../../config/consts";
+import { imageMap } from "../svgs";
+import { BodyParts } from "./types";
+import theme from "../../config/theme";
 
 type ImageWrapperProps = {
 	pointerInputIsEnabled: boolean;
@@ -16,14 +19,8 @@ type ImageWrapperProps = {
 	setPointerCaptureIsEnabled: Dispatch<SetStateAction<boolean>>;
 	dots: Record<string, { x: number; y: number }>;
 	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
+	bodyPartToDisplay: BodyParts;
 };
-
-const perspectives = [
-	{ name: "Front", svg: Front, id: "front" },
-	{ name: "Right", svg: Right, id: "right" },
-	{ name: "Back", svg: Back, id: "back" },
-	{ name: "Left", svg: Left, id: "left" },
-];
 
 const ImageWrapper = ({
 	pointerInputIsEnabled,
@@ -31,12 +28,24 @@ const ImageWrapper = ({
 	setPointerCaptureIsEnabled,
 	dots,
 	setDots,
+	bodyPartToDisplay,
 }: ImageWrapperProps) => {
 	const [currentPerspective, setCurrentPerspective] = useState(0);
+	if (currentPerspective > imageMap[bodyPartToDisplay].length) {
+		setCurrentPerspective(0);
+	}
 
-	const currentPerspectiveId = perspectives[currentPerspective].id;
 	const timer = useRef<NodeJS.Timeout | null>(null);
 	const mousePositionRef = useRef<{ x: number; y: number } | null>(null);
+
+	useEffect(() => {
+		if (currentPerspective >= imageMap[bodyPartToDisplay].length) {
+			setCurrentPerspective(0);
+		}
+	}, [bodyPartToDisplay, currentPerspective]);
+
+	const currentBodyPart = imageMap[bodyPartToDisplay];
+	const currentPerspectiveId = currentBodyPart[currentPerspective]?.id;
 
 	const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
 		const svg = event.currentTarget;
@@ -80,7 +89,7 @@ const ImageWrapper = ({
 		<StyledCard sx={{ minWidth: "600px", width: "60%", minHeight: "800px" }}>
 			<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 				<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-					{perspectives.map((perspective, index) => (
+					{currentBodyPart.map((perspective, index) => (
 						<PointerButton
 							pointerInputIsEnabled={pointerInputIsEnabled}
 							key={index}
@@ -98,12 +107,11 @@ const ImageWrapper = ({
 						justifyContent: "center",
 						alignItems: "center",
 						flexGrow: 1,
-						height: "800px",
-						width: "400px",
+						height: "100%",
 						cursor: "crosshair",
 					}}
 				>
-					{perspectives[currentPerspective].svg({
+					{currentBodyPart[currentPerspective]?.svg({
 						dot: dots[currentPerspectiveId],
 						onClick: handleBodySVGClick,
 						onMouseEnter: handleActivePointerCaptureEntry,
