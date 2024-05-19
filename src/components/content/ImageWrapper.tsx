@@ -81,9 +81,9 @@ const ImageWrapper = ({
 	};
 
 	return (
-		<StyledCard sx={{ width: "70vw" }}>
-			<Box sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
-				<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+		<StyledCard sx={{ width: "70vw", minHeight: "700px" }}>
+			<Box sx={{ display: "flex", justifyContent: "space-between", gap: 2, width: "100%" }}>
+				<Box sx={{ display: "flex", flexDirection: "column", gap: 2, marginTop: theme.spacing(2) }}>
 					{currentBodyPart.map((perspective, index) => (
 						<PointerButton
 							pointerInputIsEnabled={pointerInputIsEnabled}
