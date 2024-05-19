@@ -17,7 +17,7 @@ function App() {
 				}}
 			>
 				<CssBaseline />
-				<Logo>painpointer.info</Logo>
+				{/* <Logo>painpointer.info</Logo> */}
 				<ContentWrapper />
 			</Container>
 		</ThemeProvider>
