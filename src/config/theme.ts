@@ -63,6 +63,7 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					boxShadow: "none",
+					justifyContent: "center",
 				},
 			},
 		},

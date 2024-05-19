@@ -15,7 +15,7 @@ const ContentWrapper = () => {
 	const [formData, setFormData] = useState<FormData>({ painLevel: PainLevels.none, bodyPart: BodyParts.male });
 
 	return (
-		<Box display="flex" gap={2} justifyContent={"center"} height={"100%"}>
+		<Box display="flex" gap={2} justifyContent={"center"} height={"100%"} minHeight={"700px"}>
 			<ImageWrapper
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				pointerCaptureIsEnabled={pointerCaptureIsEnabled}

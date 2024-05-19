@@ -63,7 +63,7 @@ const OptionsWrapper = ({
 	};
 
 	return (
-		<StyledCard sx={{ minWidth: "400px", width: "40%", minHeight: "800px" }}>
+		<StyledCard sx={{ width: "40vw" }}>
 			<PointerButton
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				variant="contained"

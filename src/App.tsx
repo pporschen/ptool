@@ -12,8 +12,6 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<Container
 				sx={{
-					minHeight: "768px",
-					minWidth: "1024px",
 					padding: (theme) => theme.spacing(2),
 					height: "100%",
 				}}
@@ -30,7 +28,6 @@ export default App;
 
 const Logo = styled(Box)`
 	font-size: 1.5em;
-	margin: ${({ theme }) => theme.spacing(2)};
 	font-family: "Poetsen One", sans-serif;
 	background: ${({ theme }) =>
 		`linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`};
@@ -38,8 +35,8 @@ const Logo = styled(Box)`
 	-webkit-text-fill-color: transparent;
 	margin: ${({ theme }) => theme.spacing(2)};
 	position: fixed;
-	bottom: 65px;
-	left: -65px;
+	bottom: 200px;
+	left: -85px;
 	transform: rotate(-90deg);
 	z-index: -1;
 `;
