@@ -24,11 +24,11 @@ type ImageItem = {
 
 const imageMap: Record<BodyParts, ImageItem[]> = {
 	head: [
-		{ name: "Back", svg: HeadBack, id: "headBack" },
 		{ name: "Front", svg: HeadFront, id: "headFront" },
-		{ name: "Top", svg: HeadTop, id: "headTop" },
 		{ name: "Left", svg: HeadLeft, id: "headLeft" },
 		{ name: "Right", svg: HeadRight, id: "headRight" },
+		{ name: "Back", svg: HeadBack, id: "headBack" },
+		{ name: "Top", svg: HeadTop, id: "headTop" },
 	],
 	male: [
 		{ name: "Front", svg: MaleBodyFront, id: "maleBodyFront" },
