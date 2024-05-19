@@ -1,32 +1,12 @@
-import {
-	Box,
-	Button,
-	Card,
-	CardActions,
-	Container,
-	Divider,
-	FormControl,
-	InputLabel,
-	MenuItem,
-	Select,
-	SelectChangeEvent,
-	styled,
-} from "@mui/material";
-import Front from "../svgs/Front";
-import Back from "../svgs/Back";
-import Left from "../svgs/Left";
-import Right from "../svgs/Right";
-import { ReactNode, useState } from "react";
-import { t } from "i18next";
-import PointerButton from "../PointerControlled/PointerButton";
+import { Box, Card, styled } from "@mui/material";
+import { useState } from "react";
 import { usePointerInputStatusStore } from "../../stores/PointerInputStatusStore";
-import PointerMenuItem from "../PointerControlled/PointerMenuItem";
 import ImageWrapper from "./ImageWrapper";
 import OptionsWrapper from "./OptionsWrapper";
 import { BodyParts, PainLevels, FormData } from "./types";
 
 type Dot = { x: number; y: number };
-type DotSource = "front" | "right" | "back" | "left";
+type DotSource = "front" | "right" | "back" | "left" | "top";
 
 const ContentWrapper = () => {
 	const { pointerInputIsEnabled } = usePointerInputStatusStore((state) => state);

@@ -1,11 +1,6 @@
 import { Box } from "@mui/material";
 import { t } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
-import Back from "../svgs/Back";
-import Front from "../svgs/Front";
-import Left from "../svgs/Left";
-import Right from "../svgs/Right";
-import HeadFront from "../svgs/Head/HeadFront";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { StyledCard } from "./ContentWrapper";
 import { POINTER_DELAY } from "../../config/consts";
