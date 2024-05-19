@@ -7,6 +7,6 @@ const ACTION_DELAY = 500;
 const POINTER_DELAY = 2000;
 
 // size of the indicator dot on SVGs
-const DOT_SIZE = 25;
+const DOT_SIZE = 50;
 
 export { DWELLING_TIME_LIMIT, REFRESH_RATE, DWELLING_DELAY, ACTION_DELAY, DOT_SIZE, POINTER_DELAY };
