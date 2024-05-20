@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/ptool/static/css/main.c1996aca.css",
-    "main.js": "/ptool/static/js/main.2e70f2a0.js",
+    "main.css": "/ptool/static/css/main.baa5647c.css",
+    "main.js": "/ptool/static/js/main.472fdd2e.js",
     "static/media/NotoSans-Italic.ttf": "/ptool/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
     "static/media/NotoSans-BoldItalic.ttf": "/ptool/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
     "static/media/NotoSans-SemiBold.ttf": "/ptool/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
     "static/media/NotoSans-Regular.ttf": "/ptool/static/media/NotoSans-Regular.e49f7cc81283eef694a3.ttf",
     "static/media/NotoSans-Bold.ttf": "/ptool/static/media/NotoSans-Bold.5f7ac340604afb2500f1.ttf",
+    "static/media/Montserrat-ExtraBoldItalic.ttf": "/ptool/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
     "static/media/PoetsenOne-Regular.ttf": "/ptool/static/media/PoetsenOne-Regular.22ae511e03fc2ed8d264.ttf",
     "index.html": "/ptool/index.html",
-    "main.c1996aca.css.map": "/ptool/static/css/main.c1996aca.css.map",
-    "main.2e70f2a0.js.map": "/ptool/static/js/main.2e70f2a0.js.map"
+    "main.baa5647c.css.map": "/ptool/static/css/main.baa5647c.css.map",
+    "main.472fdd2e.js.map": "/ptool/static/js/main.472fdd2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1996aca.css",
-    "static/js/main.2e70f2a0.js"
+    "static/css/main.baa5647c.css",
+    "static/js/main.472fdd2e.js"
   ]
 }
