@@ -26,4 +26,5 @@ export enum PainSources {
 export type FormData = {
 	painLevel: PainLevels;
 	bodyPart: BodyParts;
+	painSource: PainSources;
 };

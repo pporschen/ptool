@@ -1,11 +1,9 @@
-import { FormControl, InputLabel, Select, Divider, SelectChangeEvent } from "@mui/material";
+import { Divider, SelectChangeEvent } from "@mui/material";
 import { t } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
-import PointerMenuItem from "../PointerControlled/PointerMenuItem";
 import { StyledCard } from "./ContentWrapper";
-import { useState, ReactNode, Dispatch, SetStateAction } from "react";
-import { usePointerInputStatusStore } from "../../stores/PointerInputStatusStore";
-import { BodyParts, FormData, PainLevels } from "./types";
+import { ReactNode, Dispatch, SetStateAction } from "react";
+import { BodyParts, FormData, PainLevels, PainSources } from "./types";
 import PointerSelect from "../PointerControlled/PointerSelect";
 
 type OptionsWrapperProps = {
@@ -25,15 +23,12 @@ const OptionsWrapper = ({
 	formData,
 	setFormData,
 }: OptionsWrapperProps) => {
-	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
 	const handleFormChange = (e: SelectChangeEvent<unknown>, _: ReactNode) => {
 		const { name, value } = e.target;
-		console.log(e.target);
 		setFormData({ ...formData, [name]: value });
 	};
 
 	const handleMenuItemAction = (name: string, value: string) => {
-		console.log(name, value);
 		setFormData({ ...formData, [name]: value });
 	};
 
@@ -59,6 +54,17 @@ const OptionsWrapper = ({
 				wrapperSX={{ marginBottom: (theme) => theme.spacing(2) }}
 			/>
 			<PointerSelect
+				buttonText="Open Pain Source Select"
+				pointerInputIsEnabled={pointerInputIsEnabled}
+				label="Pain Source"
+				name="painSource"
+				value={formData.painSource.toString()}
+				onChange={handleFormChange}
+				itemAction={(value: string) => handleMenuItemAction("painSource", value)}
+				items={PainSources}
+				wrapperSX={{ marginBottom: (theme) => theme.spacing(2) }}
+			/>
+			<PointerSelect
 				buttonText="Open Pain Level Select"
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				label="Pain Level"
@@ -79,7 +85,6 @@ const OptionsWrapper = ({
 			>
 				{t("Reset Points")}
 			</PointerButton>
-
 			<PointerButton
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				variant="contained"

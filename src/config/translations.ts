@@ -12,7 +12,9 @@ const resources = {
 
 			"Open Body Part Select": "Open Body Part Select",
 			"Open Pain Level Select": "Open Pain Level Select",
+			"Open Pain Source Select": "Open Pain Source Select",
 			"Open Language Select": "Open Language Select",
+			"Change Language": "Change Language",
 			"Start Pointer Capture": "Start Pointer Capture",
 			"Disable Pointer Input": "Disable Pointer Input",
 			"Enable Pointer Input": "Enable Pointer Input",
@@ -24,6 +26,7 @@ const resources = {
 
 			"Body Part": "Body Part",
 			"Pain Level": "Pain Level",
+			"Pain Source": "Pain Source",
 
 			// Body parts
 			malePart: "Full Body Male",
@@ -62,7 +65,9 @@ const resources = {
 
 			"Open Body Part Select": "Körperteil auswählen",
 			"Open Pain Level Select": "Schmerzlevel auswählen",
+			"Open Pain Source Select": "Schmerzquelle auswählen",
 			"Open Language Select": "Sprache auswählen",
+			"Change Language": "Sprache ändern",
 			"Start Pointer Capture": "Pointer-Erfassung starten",
 			"Disable Pointer Input": "Pointer-Steuerung deaktivieren",
 			"Enable Pointer Input": "Pointer-Steuerung aktivieren",
@@ -71,6 +76,7 @@ const resources = {
 
 			"Body Part": "Körperteil",
 			"Pain Level": "Schmerzlevel",
+			"Pain Source": "Schmerzquelle",
 			Language: "Sprache",
 			Close: "Schließen",
 
