@@ -1,4 +1,5 @@
 import { Close } from "@mui/icons-material";
+import { head } from "lodash";
 
 const resources = {
 	en: {
@@ -7,32 +8,38 @@ const resources = {
 			Left: "Left",
 			Front: "Front",
 			Back: "Back",
+			Top: "Top",
+
 			"Open Body Part Select": "Open Body Part Select",
 			"Open Pain Level Select": "Open Pain Level Select",
 			"Open Language Select": "Open Language Select",
 			"Start Pointer Capture": "Start Pointer Capture",
-			"Export PDF": "Export PDF",
-			"Body Part": "Body Part",
-			"Pain Level": "Pain Level",
-			Itch: "Itch",
-			"Mild Pain": "Mild Pain",
-			"Moderate Pain": "Moderate Pain",
-			"Severe Pain": "Severe Pain",
-			"Full Body": "Full Body",
-			Head: "Head",
-			Teeth: "Teeth",
-			Eye: "Eye",
-			Feet: "Feet",
-			Hands: "Hands",
 			"Disable Pointer Input": "Disable Pointer Input",
 			"Enable Pointer Input": "Enable Pointer Input",
 			"Reset Points": "Reset Points",
 			"Stop Pointer Capture": "Stop Pointer Capture",
-			female: "Full Body Female",
-			male: "Full Body Male",
-			head: "Head",
+
 			Language: "Language",
 			Close: "Close",
+
+			"Body Part": "Body Part",
+			"Pain Level": "Pain Level",
+
+			// Body parts
+			malePart: "Full Body Male",
+			femalePart: "Full Body Female",
+			headPart: "Head",
+
+			// Pain levels
+			noneLevel: "None",
+			mildLevel: "Mild Pain",
+			moderateLevel: "Moderate Pain",
+			severeLevel: "Severe Pain",
+			itchLevel: "Itch",
+
+			// Languages
+			en: "English",
+			de: "Deutsch",
 		},
 	},
 	de: {
@@ -41,32 +48,33 @@ const resources = {
 			Left: "Links",
 			Front: "Vorne",
 			Back: "Hinten",
+			Top: "Oben",
+
 			"Open Body Part Select": "Körperteil auswählen",
 			"Open Pain Level Select": "Schmerzlevel auswählen",
 			"Open Language Select": "Sprache auswählen",
 			"Start Pointer Capture": "Pointer-Erfassung starten",
-			"Export PDF": "PDF exportieren",
-			"Body Part": "Körperteil",
-			"Pain Level": "Schmerzlevel",
-			Itch: "Juckreiz",
-			"Mild Pain": "Leichte Schmerzen",
-			"Moderate Pain": "Mäßige Schmerzen",
-			"Severe Pain": "Starke Schmerzen",
-			"Full Body": "Gesamter Körper",
-			Head: "Kopf",
-			Teeth: "Zähne",
-			Eye: "Auge",
-			Feet: "Füße",
-			Hands: "Hände",
 			"Disable Pointer Input": "Pointer-Steuerung deaktivieren",
 			"Enable Pointer Input": "Pointer-Steuerung aktivieren",
 			"Reset Points": "Markierungen zurücksetzen",
 			"Stop Pointer Capture": "Pointer-Erfassung stoppen",
-			female: "Gesamter Körper weiblich",
-			male: "Gesamter Körper männlich",
-			head: "Kopf",
+
+			"Body Part": "Körperteil",
+			"Pain Level": "Schmerzlevel",
 			Language: "Sprache",
 			Close: "Schließen",
+
+			// Body parts
+			malePart: "Ganzer Körper männlich",
+			femalePart: "Ganzer Körper weiblich",
+			headPart: "Kopf",
+
+			// Pain levels
+			noneLevel: "Keine Angabe",
+			mildLevel: "Leichte Schmerzen",
+			moderateLevel: "Mittlere Schmerzen",
+			severeLevel: "Starke Schmerzen",
+			itchLevel: "Juckreiz",
 		},
 	},
 };
