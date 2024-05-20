@@ -15,12 +15,10 @@ type LanguageSelectProps = {
 
 const LanguageSelect = ({ language, setLanguage, pointerInputIsEnabled }: LanguageSelectProps) => {
 	const { i18n } = useTranslation();
-	const [selectIsOpen, setSelectIsOpen] = useState(false);
 
 	const languageChange = (lang: string) => {
 		setLanguage(lang);
 		i18n.changeLanguage(lang);
-		setSelectIsOpen(false);
 	};
 
 	const handleLanguageChange = (event: SelectChangeEvent) => {
@@ -31,10 +29,6 @@ const LanguageSelect = ({ language, setLanguage, pointerInputIsEnabled }: Langua
 		EN = "en",
 		DE = "de",
 	}
-
-	const handleSelectOpen = () => {
-		setSelectIsOpen(true);
-	};
 
 	return (
 		<Box display="flex" flexDirection="column" width="100%" justifyContent={"flex-start"}>
