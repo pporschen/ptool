@@ -1,22 +1,18 @@
-import { Settings } from "@mui/icons-material";
-import { Fab, Box, List, ListItem, styled, Drawer } from "@mui/material";
+import { Box, List, ListItem, styled, Drawer } from "@mui/material";
 import { t } from "i18next";
-import theme from "../config/theme";
 import LanguageSelect from "./LanguageSelect";
 import PointerButton from "./PointerControlled/PointerButton";
 import { Dispatch, SetStateAction, useState } from "react";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 type AppDrawerProps = {
 	language: string;
 	setLanguage: Dispatch<SetStateAction<string>>;
+	drawerOpen: boolean;
+	setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const AppDrawer = ({ language, setLanguage }: AppDrawerProps) => {
-	const [drawerOpen, setDrawerOpen] = useState(false);
-
+const AppDrawer = ({ language, setLanguage, drawerOpen, setDrawerOpen }: AppDrawerProps) => {
 	const { pointerInputIsEnabled, setPointerInputIsEnabled } = usePointerInputStatusStore((state) => state);
 
 	const handlePointerInputToggle = () => {
@@ -24,23 +20,6 @@ const AppDrawer = ({ language, setLanguage }: AppDrawerProps) => {
 	};
 	return (
 		<>
-			<Fab
-				aria-label="pointerActivvity"
-				size="large"
-				sx={{ position: "absolute", bottom: theme.spacing(11), left: theme.spacing(3) }}
-				disabled
-			>
-				{pointerInputIsEnabled ? <VisibilityIcon /> : <VisibilityOffIcon />}
-			</Fab>
-			<Fab
-				color="secondary"
-				aria-label="add"
-				size="large"
-				sx={{ position: "absolute", bottom: theme.spacing(3), left: theme.spacing(3) }}
-				onMouseEnter={() => setDrawerOpen(true)}
-			>
-				<Settings />
-			</Fab>
 			<Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} sx={{ width: "30vw" }}>
 				<Box width={"300px"}>
 					<Logo>painpointer</Logo>

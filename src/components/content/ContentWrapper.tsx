@@ -1,14 +1,23 @@
-import { Box, Card, styled } from "@mui/material";
-import { useState } from "react";
+import { Box, Card, Fab, styled } from "@mui/material";
+import { Dispatch, SetStateAction, useState } from "react";
 import { usePointerInputStatusStore } from "../../stores/PointerInputStatusStore";
 import ImageWrapper from "./ImageWrapper";
 import OptionsWrapper from "./OptionsWrapper";
 import { BodyParts, PainLevels, FormData, PainSources } from "./types";
+import { Settings } from "@mui/icons-material";
+import theme from "../../config/theme";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 type Dot = { x: number; y: number };
 type DotSource = "front" | "right" | "back" | "left" | "top";
 
-const ContentWrapper = () => {
+type ContentWrapperProps = {
+	setDrawerOpen: Dispatch<SetStateAction<boolean>>;
+	drawerOpen: boolean;
+};
+
+const ContentWrapper = ({ setDrawerOpen, drawerOpen }: ContentWrapperProps) => {
 	const { pointerInputIsEnabled } = usePointerInputStatusStore((state) => state);
 	const [pointerCaptureIsEnabled, setPointerCaptureIsEnabled] = useState(false);
 	const [dots, setDots] = useState<Record<DotSource, Dot> | {}>({});
@@ -20,6 +29,21 @@ const ContentWrapper = () => {
 
 	return (
 		<Box display="flex" gap={2} justifyContent={"center"} height={"100%"} minHeight={"700px"}>
+			<Box
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: theme.spacing(1),
+					justifyContent: "flex-end",
+				}}
+			>
+				<Fab aria-label="pointerActivvity" size="large" disabled>
+					{pointerInputIsEnabled ? <VisibilityIcon /> : <VisibilityOffIcon />}
+				</Fab>
+				<Fab color="secondary" aria-label="add" size="large" onMouseEnter={() => setDrawerOpen(true)}>
+					<Settings />
+				</Fab>
+			</Box>
 			<ImageWrapper
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				pointerCaptureIsEnabled={pointerCaptureIsEnabled}
