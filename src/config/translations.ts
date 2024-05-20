@@ -40,6 +40,16 @@ const resources = {
 			// Languages
 			en: "English",
 			de: "Deutsch",
+
+			// Pain sources
+			noneSource: "None",
+			skinSource: "Skin",
+			muscleSource: "Muscle",
+			boneSource: "Bone",
+			organSource: "Organ",
+			jointSource: "Joint",
+			nerveSource: "Nerve",
+			crampSource: "Cramp",
 		},
 	},
 	de: {
@@ -75,6 +85,16 @@ const resources = {
 			moderateLevel: "Mittlere Schmerzen",
 			severeLevel: "Starke Schmerzen",
 			itchLevel: "Juckreiz",
+
+			// Pain sources
+			noneSource: "Keine Angabe",
+			skinSource: "Haut",
+			muscleSource: "Muskel",
+			boneSource: "Knochen",
+			organSource: "Organ",
+			jointSource: "Gelenk",
+			nerveSource: "Nerv",
+			crampSource: "Krampf",
 		},
 	},
 };

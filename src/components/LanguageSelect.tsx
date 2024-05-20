@@ -5,6 +5,7 @@ import PointerMenuItem from "./PointerControlled/PointerMenuItem";
 import PointerButton from "./PointerControlled/PointerButton";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
 import { t } from "i18next";
+import PointerSelect from "./PointerControlled/PointerSelect";
 
 type LanguageSelectProps = {
 	language: string;
@@ -26,10 +27,10 @@ const LanguageSelect = ({ language, setLanguage, pointerInputIsEnabled }: Langua
 		languageChange(event.target.value);
 	};
 
-	const availableLanguages = [
-		{ value: "en", label: "English" },
-		{ value: "de", label: "Deutsch" },
-	];
+	enum AvailableLanguages {
+		EN = "en",
+		DE = "de",
+	}
 
 	const handleSelectOpen = () => {
 		setSelectIsOpen(true);
@@ -37,29 +38,16 @@ const LanguageSelect = ({ language, setLanguage, pointerInputIsEnabled }: Langua
 
 	return (
 		<Box display="flex" flexDirection="column" width="100%" justifyContent={"flex-start"}>
-			<PointerButton
+			<PointerSelect
+				buttonText="Change Language"
 				pointerInputIsEnabled={pointerInputIsEnabled}
-				variant="contained"
-				color="primary"
-				onClick={handleSelectOpen}
-			>
-				{t("Open Language Select")}
-			</PointerButton>
-			<FormControl fullWidth margin="normal">
-				<InputLabel id="body-part-label">{t("Body Part")}</InputLabel>
-				<Select value={language} onChange={handleLanguageChange} fullWidth open={selectIsOpen} label={t("Language")}>
-					{availableLanguages.map((lang) => (
-						<PointerMenuItem
-							key={lang.value}
-							value={lang.value}
-							action={() => languageChange(lang.value)}
-							pointerInputIsEnabled={pointerInputIsEnabled}
-						>
-							{lang.label}
-						</PointerMenuItem>
-					))}
-				</Select>
-			</FormControl>
+				label="Language"
+				value={language}
+				onChange={handleLanguageChange}
+				itemAction={languageChange}
+				items={AvailableLanguages}
+				name="language"
+			/>
 		</Box>
 	);
 };
