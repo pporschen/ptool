@@ -4,14 +4,17 @@ import { t } from "i18next";
 import theme from "../config/theme";
 import LanguageSelect from "./LanguageSelect";
 import PointerButton from "./PointerControlled/PointerButton";
-import { useState } from "react";
-import i18n from "../i18n";
+import { Dispatch, SetStateAction, useState } from "react";
 import { usePointerInputStatusStore } from "../stores/PointerInputStatusStore";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-const AppDrawer = () => {
-	const [language, setLanguage] = useState(i18n.language);
+type AppDrawerProps = {
+	language: string;
+	setLanguage: Dispatch<SetStateAction<string>>;
+};
+
+const AppDrawer = ({ language, setLanguage }: AppDrawerProps) => {
 	const [drawerOpen, setDrawerOpen] = useState(false);
 
 	const { pointerInputIsEnabled, setPointerInputIsEnabled } = usePointerInputStatusStore((state) => state);

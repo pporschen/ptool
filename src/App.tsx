@@ -3,8 +3,12 @@ import theme from "./config/theme";
 import ContentWrapper from "./components/content/ContentWrapper";
 
 import AppDrawer from "./components/Drawer";
+import i18n from "./i18n";
+import { useState } from "react";
 
 function App() {
+	const [language, setLanguage] = useState(i18n.language);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Container
@@ -14,7 +18,7 @@ function App() {
 				}}
 			>
 				<CssBaseline />
-				<AppDrawer />
+				<AppDrawer language={language} setLanguage={setLanguage} />
 				<ContentWrapper />
 			</Container>
 		</ThemeProvider>
