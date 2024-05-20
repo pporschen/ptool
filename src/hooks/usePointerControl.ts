@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DWELLING_DELAY, DWELLING_TIME_LIMIT, REFRESH_RATE, ACTION_DELAY } from "../config/consts";
 
 const dwellingTimeToProgress = (dwellingTime: number) => ((dwellingTime - DWELLING_DELAY) / DWELLING_TIME_LIMIT) * 100;
@@ -49,6 +49,17 @@ const usePointerControl = ({ action, pointerInputIsEnabled }: PointerControlProp
 			setIsDwelling(false);
 		}
 	};
+
+	useEffect(() => {
+		return () => {
+			if (timer.current) {
+				clearInterval(timer.current);
+			}
+			if (actionTimeout.current) {
+				clearTimeout(actionTimeout.current);
+			}
+		};
+	}, []);
 
 	return { handlePointerEntry, handlePointerLeave, dwellingProgress, isDwelling, dwellingDelayPassed, dwellingTime };
 };
