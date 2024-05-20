@@ -1,13 +1,10 @@
-import { Box, Container, CssBaseline, ThemeProvider, makeStyles, styled } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./config/theme";
-import Header from "./components/Header";
 import ContentWrapper from "./components/content/ContentWrapper";
-import { useEffect, useState } from "react";
-import i18n from "./i18n";
+
+import AppDrawer from "./components/Drawer";
 
 function App() {
-	const [language, setLanguage] = useState(i18n.language);
-
 	return (
 		<ThemeProvider theme={theme}>
 			<Container
@@ -17,7 +14,7 @@ function App() {
 				}}
 			>
 				<CssBaseline />
-				{/* <Logo>painpointer.info</Logo> */}
+				<AppDrawer />
 				<ContentWrapper />
 			</Container>
 		</ThemeProvider>
@@ -25,18 +22,3 @@ function App() {
 }
 
 export default App;
-
-const Logo = styled(Box)`
-	font-size: 1.5em;
-	font-family: "Poetsen One", sans-serif;
-	background: ${({ theme }) =>
-		`linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`};
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	margin: ${({ theme }) => theme.spacing(2)};
-	position: fixed;
-	bottom: 200px;
-	left: -85px;
-	transform: rotate(-90deg);
-	z-index: -1;
-`;

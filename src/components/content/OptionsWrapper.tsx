@@ -26,9 +26,6 @@ const OptionsWrapper = ({
 }: OptionsWrapperProps) => {
 	const [selectIsOpen, setSelectIsOpen] = useState({ painLevel: false, bodyPart: false });
 	const setPointerInputIsEnabled = usePointerInputStatusStore((state) => state.setPointerInputIsEnabled);
-	const handlePointerInputToggle = () => {
-		setPointerInputIsEnabled(!pointerInputIsEnabled);
-	};
 
 	const handleFormChange = (e: SelectChangeEvent<unknown>, _: ReactNode) => {
 		const { name, value } = e.target;
@@ -173,17 +170,6 @@ const OptionsWrapper = ({
 				onClick={handlePointerCaptureToggle}
 			>
 				{pointerCaptureIsEnabled ? t("Stop Pointer Capture") : t("Start Pointer Capture")}
-			</PointerButton>
-
-			<PointerButton
-				pointerInputIsEnabled
-				variant="contained"
-				color="secondary"
-				onClick={handlePointerInputToggle}
-				fullWidth
-				sx={{ marginTop: (theme) => theme.spacing(1) }}
-			>
-				{pointerInputIsEnabled ? t("Disable Pointer Input") : t("Enable Pointer Input")}
 			</PointerButton>
 		</StyledCard>
 	);

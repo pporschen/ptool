@@ -6,6 +6,6 @@ export type PointerInputStatus = {
 };
 
 export const usePointerInputStatusStore = create<PointerInputStatus>((set) => ({
-	pointerInputIsEnabled: false,
+	pointerInputIsEnabled: true,
 	setPointerInputIsEnabled: (pointerInputIsEnabled: boolean) => set({ pointerInputIsEnabled }),
 }));

@@ -1,3 +1,5 @@
+import { Close } from "@mui/icons-material";
+
 const resources = {
 	en: {
 		translation: {
@@ -7,6 +9,7 @@ const resources = {
 			Back: "Back",
 			"Open Body Part Select": "Open Body Part Select",
 			"Open Pain Level Select": "Open Pain Level Select",
+			"Open Language Select": "Open Language Select",
 			"Start Pointer Capture": "Start Pointer Capture",
 			"Export PDF": "Export PDF",
 			"Body Part": "Body Part",
@@ -28,6 +31,8 @@ const resources = {
 			female: "Full Body Female",
 			male: "Full Body Male",
 			head: "Head",
+			Language: "Language",
+			Close: "Close",
 		},
 	},
 	de: {
@@ -38,6 +43,7 @@ const resources = {
 			Back: "Hinten",
 			"Open Body Part Select": "Körperteil auswählen",
 			"Open Pain Level Select": "Schmerzlevel auswählen",
+			"Open Language Select": "Sprache auswählen",
 			"Start Pointer Capture": "Pointer-Erfassung starten",
 			"Export PDF": "PDF exportieren",
 			"Body Part": "Körperteil",
@@ -59,6 +65,8 @@ const resources = {
 			female: "Gesamter Körper weiblich",
 			male: "Gesamter Körper männlich",
 			head: "Kopf",
+			Language: "Sprache",
+			Close: "Schließen",
 		},
 	},
 };

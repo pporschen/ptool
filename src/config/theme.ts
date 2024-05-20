@@ -67,6 +67,20 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiListItem: {
+			styleOverrides: {
+				root: {
+					paddingTop: 0,
+				},
+			},
+		},
+		MuiFab: {
+			styleOverrides: {
+				root: {
+					boxShadow: "none",
+				},
+			},
+		},
 	},
 });
 
