@@ -37,7 +37,7 @@ const ContentWrapper = ({ setDrawerOpen, drawerOpen }: ContentWrapperProps) => {
 					justifyContent: "flex-end",
 				}}
 			>
-				<Fab aria-label="pointerActivvity" size="large" disabled>
+				<Fab size="large" disabled>
 					{pointerInputIsEnabled ? <VisibilityIcon /> : <VisibilityOffIcon />}
 				</Fab>
 				<Fab color="secondary" aria-label="add" size="large" onMouseEnter={() => setDrawerOpen(true)}>
@@ -47,7 +47,6 @@ const ContentWrapper = ({ setDrawerOpen, drawerOpen }: ContentWrapperProps) => {
 			<ImageWrapper
 				pointerInputIsEnabled={pointerInputIsEnabled}
 				pointerCaptureIsEnabled={pointerCaptureIsEnabled}
-				setPointerCaptureIsEnabled={setPointerCaptureIsEnabled}
 				dots={dots}
 				setDots={setDots}
 				bodyPartToDisplay={formData.bodyPart}

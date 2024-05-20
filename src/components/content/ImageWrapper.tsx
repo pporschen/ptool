@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import { t } from "i18next";
+import { t, use } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { StyledCard } from "./ContentWrapper";
 import { POINTER_DELAY } from "../../config/consts";
 import { imageMap } from "../svgs";
@@ -11,7 +11,6 @@ import theme from "../../config/theme";
 type ImageWrapperProps = {
 	pointerInputIsEnabled: boolean;
 	pointerCaptureIsEnabled: boolean;
-	setPointerCaptureIsEnabled: Dispatch<SetStateAction<boolean>>;
 	dots: Record<string, { x: number; y: number }>;
 	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
 	bodyPartToDisplay: BodyParts;
@@ -20,7 +19,6 @@ type ImageWrapperProps = {
 const ImageWrapper = ({
 	pointerInputIsEnabled,
 	pointerCaptureIsEnabled,
-	setPointerCaptureIsEnabled,
 	dots,
 	setDots,
 	bodyPartToDisplay,
@@ -33,11 +31,9 @@ const ImageWrapper = ({
 	const timer = useRef<NodeJS.Timeout | null>(null);
 	const mousePositionRef = useRef<{ x: number; y: number } | null>(null);
 
-	useEffect(() => {
-		if (currentPerspective >= imageMap[bodyPartToDisplay].length) {
-			setCurrentPerspective(0);
-		}
-	}, [bodyPartToDisplay, currentPerspective]);
+	useLayoutEffect(() => {
+		setCurrentPerspective(0);
+	}, [bodyPartToDisplay]);
 
 	const currentBodyPart = imageMap[bodyPartToDisplay];
 	const currentPerspectiveId = currentBodyPart[currentPerspective]?.id;
@@ -52,7 +48,6 @@ const ImageWrapper = ({
 	};
 
 	const handleBodySVGClick = () => {
-		console.log({ mousePosition: mousePositionRef.current });
 		if (!mousePositionRef.current) return;
 		setDots((prev) => ({
 			...prev,
@@ -60,25 +55,31 @@ const ImageWrapper = ({
 		}));
 	};
 
+	const clearTimeouts = () => {
+		if (timer.current) {
+			clearTimeout(timer.current);
+			timer.current = null;
+		}
+	};
+
 	const handleActivePointerCaptureEntry = () => {
 		if (pointerCaptureIsEnabled) {
-			if (timer.current) {
-				clearTimeout(timer.current);
-				timer.current = null;
-			}
-
+			clearTimeouts();
 			timer.current = setTimeout(handleBodySVGClick, POINTER_DELAY);
 		}
 	};
 
 	const handleActivePointerCaptureExit = () => {
-		if (timer.current) {
-			clearTimeout(timer.current);
-			timer.current = null;
+		if (pointerCaptureIsEnabled) {
+			clearTimeouts();
 		}
-		//
-		setPointerCaptureIsEnabled(false);
 	};
+
+	useEffect(() => {
+		return clearTimeouts;
+	}, []);
+
+	useEffect(() => clearTimeouts(), [currentPerspective, bodyPartToDisplay]);
 
 	return (
 		<StyledCard sx={{ width: "70vw", minHeight: "700px", minWidth: "700px" }}>
