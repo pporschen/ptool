@@ -81,7 +81,7 @@ const ImageWrapper = ({
 	};
 
 	return (
-		<StyledCard sx={{ width: "70vw", minHeight: "700px" }}>
+		<StyledCard sx={{ width: "70vw", minHeight: "700px", minWidth: "700px" }}>
 			<Box sx={{ display: "flex", justifyContent: "space-between", gap: 2, width: "100%" }}>
 				<Box sx={{ display: "flex", flexDirection: "column", gap: 2, marginTop: theme.spacing(2), minHeight: "700px" }}>
 					{currentBodyPart.map((perspective, index) => (

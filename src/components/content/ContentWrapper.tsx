@@ -28,7 +28,7 @@ const ContentWrapper = ({ setDrawerOpen, drawerOpen }: ContentWrapperProps) => {
 	});
 
 	return (
-		<Box display="flex" gap={2} justifyContent={"center"} height={"100%"} minHeight={"700px"}>
+		<Box display="flex" gap={2} justifyContent={"center"} height={"100%"} minHeight={"700px"} minWidth={"1000px"}>
 			<Box
 				sx={{
 					display: "flex",

@@ -41,7 +41,7 @@ const OptionsWrapper = ({
 	};
 
 	return (
-		<StyledCard sx={{ width: "40vw" }}>
+		<StyledCard sx={{ width: "40vw", minWidth: "300px" }}>
 			<PointerSelect
 				buttonText="Open Body Part Select"
 				pointerInputIsEnabled={pointerInputIsEnabled}

@@ -22,8 +22,8 @@ const AppDrawer = ({ language, setLanguage, drawerOpen, setDrawerOpen }: AppDraw
 		<>
 			<Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} sx={{ width: "30vw" }}>
 				<Box width={"300px"}>
-					<Logo>painpointer</Logo>
-					<List sx={{ display: "flex", flexDirection: "column", height: "90vh" }}>
+					<Logo>PAINPOINTER</Logo>
+					<List sx={{ display: "flex", flexDirection: "column", height: "88vh" }}>
 						<ListItem>
 							<LanguageSelect
 								pointerInputIsEnabled={pointerInputIsEnabled}
@@ -62,11 +62,13 @@ const AppDrawer = ({ language, setLanguage, drawerOpen, setDrawerOpen }: AppDraw
 export default AppDrawer;
 
 const Logo = styled(Box)`
-	font-size: 1.5em;
-	font-family: "Poetsen One", sans-serif;
+	font-size: 2rem;
 	background: ${({ theme }) =>
 		`linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`};
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	margin: ${({ theme }) => theme.spacing(2)};
+	font-weight: 800;
+	font-style: italic;
+	font-family: "Montserrat", sans-serif;
 `;
