@@ -1,7 +1,7 @@
 import { DOT_SIZE } from "../../../../config/consts";
 import { BodySVGProps } from "../../types";
 
-const FemaleBodyLeft = ({ dot, onClick, onMouseEnter, onMouseMove }: BodySVGProps) => {
+const FemaleBodyLeft = ({ dot, onClick, onMouseEnter, onMouseMove, onMouseLeave }: BodySVGProps) => {
 	return (
 		<svg
 			width="100%"
@@ -15,6 +15,7 @@ const FemaleBodyLeft = ({ dot, onClick, onMouseEnter, onMouseMove }: BodySVGProp
 			onClick={onClick}
 			onMouseEnter={onMouseEnter}
 			onMouseMove={onMouseMove}
+			onMouseLeave={onMouseLeave}
 		>
 			<g id="Hintergrund" transform="matrix(0.829751,0,0,0.829751,-1653.47,-674.703)">
 				<use xlinkHref="#_Image1" x="3457" y="1152" width="687px" height="4143px" />
