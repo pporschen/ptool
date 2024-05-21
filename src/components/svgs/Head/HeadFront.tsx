@@ -11,7 +11,13 @@ const HeadFront = ({ dot, onClick, onMouseEnter, onMouseMove, onMouseLeave }: Bo
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 			xmlSpace="preserve"
-			style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
+			style={{
+				transform: dot?.isMirrored ? "scaleX(-1)" : "scaleX(1)",
+				fillRule: "evenodd",
+				clipRule: "evenodd",
+				strokeLinejoin: "round",
+				strokeMiterlimit: 2,
+			}}
 			onClick={onClick}
 			onMouseEnter={onMouseEnter}
 			onMouseMove={onMouseMove}

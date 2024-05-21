@@ -9,18 +9,19 @@ import theme from "../../config/theme";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-type Dot = { x: number; y: number };
-type DotSource = "front" | "right" | "back" | "left" | "top";
+export type Dot = { x: number; y: number; isMirrored?: boolean };
+type DotSource = string;
+
+export type DotsState = Record<DotSource, Dot>;
 
 type ContentWrapperProps = {
 	setDrawerOpen: Dispatch<SetStateAction<boolean>>;
-	drawerOpen: boolean;
 };
 
-const ContentWrapper = ({ setDrawerOpen, drawerOpen }: ContentWrapperProps) => {
+const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
 	const { pointerInputIsEnabled } = usePointerInputStatusStore((state) => state);
 	const [pointerCaptureIsEnabled, setPointerCaptureIsEnabled] = useState(false);
-	const [dots, setDots] = useState<Record<DotSource, Dot> | {}>({});
+	const [dots, setDots] = useState<DotsState | {}>({});
 	const [formData, setFormData] = useState<FormData>({
 		painLevel: PainLevels.none,
 		bodyPart: BodyParts.male,

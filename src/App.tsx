@@ -26,7 +26,7 @@ function App() {
 					drawerOpen={drawerOpen}
 					setDrawerOpen={setDrawerOpen}
 				/>
-				<ContentWrapper drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+				<ContentWrapper setDrawerOpen={setDrawerOpen} />
 			</Container>
 		</ThemeProvider>
 	);

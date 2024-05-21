@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { t, use } from "i18next";
+import { t } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
 import { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { StyledCard } from "./ContentWrapper";
+import { DotsState, StyledCard } from "./ContentWrapper";
 import { POINTER_DELAY } from "../../config/consts";
 import { imageMap } from "../svgs";
 import { BodyParts } from "./types";
@@ -11,8 +11,8 @@ import theme from "../../config/theme";
 type ImageWrapperProps = {
 	pointerInputIsEnabled: boolean;
 	pointerCaptureIsEnabled: boolean;
-	dots: Record<string, { x: number; y: number }>;
-	setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
+	dots: DotsState;
+	setDots: Dispatch<SetStateAction<DotsState>>;
 	bodyPartToDisplay: BodyParts;
 };
 
@@ -24,9 +24,6 @@ const ImageWrapper = ({
 	bodyPartToDisplay,
 }: ImageWrapperProps) => {
 	const [currentPerspective, setCurrentPerspective] = useState(0);
-	if (currentPerspective > imageMap[bodyPartToDisplay].length) {
-		setCurrentPerspective(0);
-	}
 
 	const timer = useRef<NodeJS.Timeout | null>(null);
 	const mousePositionRef = useRef<{ x: number; y: number } | null>(null);
@@ -36,7 +33,8 @@ const ImageWrapper = ({
 	}, [bodyPartToDisplay]);
 
 	const currentBodyPart = imageMap[bodyPartToDisplay];
-	const currentPerspectiveId = currentBodyPart[currentPerspective]?.id;
+	const currentImage = currentBodyPart[currentPerspective];
+	const currentImageId = currentImage?.id;
 
 	const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
 		const svg = event.currentTarget;
@@ -51,7 +49,7 @@ const ImageWrapper = ({
 		if (!mousePositionRef.current) return;
 		setDots((prev) => ({
 			...prev,
-			[currentPerspectiveId]: { x: mousePositionRef.current!.x, y: mousePositionRef.current!.y },
+			[currentImageId]: { x: mousePositionRef.current!.x, y: mousePositionRef.current!.y },
 		}));
 	};
 
@@ -97,6 +95,26 @@ const ImageWrapper = ({
 							{t(perspective.name)}
 						</PointerButton>
 					))}
+					{currentImage?.mirrorable && (
+						<PointerButton
+							pointerInputIsEnabled={pointerInputIsEnabled}
+							onClick={() => {
+								setDots((prev) => ({
+									...prev,
+									[currentImageId]: {
+										x: prev[currentImageId]?.x,
+										y: prev[currentImageId]?.y,
+										isMirrored: !prev[currentImageId]?.isMirrored,
+									},
+								}));
+							}}
+							variant="contained"
+							color="primary"
+							sx={{ marginTop: (theme) => theme.spacing(3) }}
+						>
+							{t("Mirror")}
+						</PointerButton>
+					)}
 				</Box>
 				<Box
 					sx={{
@@ -107,8 +125,8 @@ const ImageWrapper = ({
 						cursor: "crosshair",
 					}}
 				>
-					{currentBodyPart[currentPerspective]?.svg({
-						dot: dots[currentPerspectiveId],
+					{currentImage?.svg({
+						dot: dots[currentImageId],
 						onClick: handleBodySVGClick,
 						onMouseEnter: handleActivePointerCaptureEntry,
 						onMouseMove: handleMouseMove,

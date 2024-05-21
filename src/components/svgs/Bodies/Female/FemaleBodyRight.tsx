@@ -11,7 +11,13 @@ const FemaleBodyRight = ({ dot, onClick, onMouseEnter, onMouseMove, onMouseLeave
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 			xmlSpace="preserve"
-			style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
+			style={{
+				transform: dot?.isMirrored ? "scaleX(-1)" : "scaleX(1)",
+				fillRule: "evenodd",
+				clipRule: "evenodd",
+				strokeLinejoin: "round",
+				strokeMiterlimit: 2,
+			}}
 			onClick={onClick}
 			onMouseEnter={onMouseEnter}
 			onMouseMove={onMouseMove}
@@ -41,7 +47,7 @@ const FemaleBodyRight = ({ dot, onClick, onMouseEnter, onMouseMove, onMouseLeave
 				/>
 			</defs>
 
-			{dot && <circle cx={dot.x} cy={dot.y} r={DOT_SIZE} fill="red" />}
+			{dot?.x && dot.y && <circle cx={dot.x} cy={dot.y} r={DOT_SIZE} fill="red" />}
 		</svg>
 	);
 };
