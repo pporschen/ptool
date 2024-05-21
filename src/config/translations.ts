@@ -10,6 +10,7 @@ const resources = {
 			Front: "Front",
 			Back: "Back",
 			Top: "Top",
+			Bottom: "Bottom",
 
 			"Open Body Part Select": "Open Body Part Select",
 			"Open Pain Level Select": "Open Pain Level Select",
@@ -65,6 +66,7 @@ const resources = {
 			Front: "Vorne",
 			Back: "Hinten",
 			Top: "Oben",
+			Bottom: "Unten",
 
 			"Open Body Part Select": "Körperteil auswählen",
 			"Open Pain Level Select": "Schmerzlevel auswählen",
