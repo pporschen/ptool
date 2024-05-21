@@ -1,4 +1,4 @@
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, LinearProgress } from '@mui/material';
 import { t } from 'i18next';
 import PointerButton from '../PointerControlled/PointerButton';
 import {
@@ -32,8 +32,10 @@ const ImageWrapper = ({
   bodyPartToDisplay,
 }: ImageWrapperProps) => {
   const [currentPerspective, setCurrentPerspective] = useState(0);
+  const [captureProgress, setCaptureProgress] = useState(100);
 
   const timer = useRef<NodeJS.Timeout | null>(null);
+  const progressInterval = useRef<NodeJS.Timeout | null>(null);
   const mousePositionRef = useRef<{ x: number; y: number } | null>(null);
 
   useLayoutEffect(() => {
@@ -72,17 +74,28 @@ const ImageWrapper = ({
       clearTimeout(timer.current);
       timer.current = null;
     }
+    if (progressInterval.current) {
+      clearInterval(progressInterval.current);
+      progressInterval.current = null;
+    }
   };
 
   const handleActivePointerCaptureEntry = () => {
     if (pointerCaptureIsEnabled) {
       clearTimeouts();
+      progressInterval.current = setInterval(() => {
+        setCaptureProgress((prev) => {
+          return Math.max(prev - 100 / 3, 0);
+        });
+      }, 500);
       timer.current = setTimeout(handleBodySVGClick, POINTER_DELAY);
     }
   };
 
   const handleActivePointerCaptureExit = () => {
     if (pointerCaptureIsEnabled) {
+      clearInterval(progressInterval.current!);
+      setCaptureProgress(100);
       clearTimeouts();
     }
   };
@@ -167,6 +180,13 @@ const ImageWrapper = ({
             onMouseMove: handleMouseMove,
             onMouseLeave: handleActivePointerCaptureExit,
           })}
+
+          <LinearProgress
+            variant="determinate"
+            value={captureProgress}
+            color="secondary"
+            sx={{ visibility: pointerCaptureIsEnabled ? 'visible' : 'hidden' }}
+          />
         </Box>
       </Box>
     </StyledCard>
