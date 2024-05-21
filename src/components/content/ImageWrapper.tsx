@@ -50,7 +50,11 @@ const ImageWrapper = ({
 		if (!mousePositionRef.current) return;
 		setDots((prev) => ({
 			...prev,
-			[currentImageId]: { x: mousePositionRef.current!.x, y: mousePositionRef.current!.y },
+			[currentImageId]: {
+				x: mousePositionRef.current!.x,
+				y: mousePositionRef.current!.y,
+				isMirrored: prev[currentImageId]?.isMirrored,
+			},
 		}));
 	};
 
