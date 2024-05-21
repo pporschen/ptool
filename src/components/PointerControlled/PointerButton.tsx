@@ -28,6 +28,7 @@ const PointerButton = ({
       onClick={handleClick}
       onMouseEnter={handlePointerEntry}
       onMouseLeave={handlePointerLeave}
+      disableRipple={pointerInputIsEnabled}
       {...props}
     >
       {isDwelling && dwellingDelayPassed && (
