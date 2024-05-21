@@ -10,6 +10,7 @@ export enum BodyParts {
 	male = "malePart",
 	female = "femalePart",
 	head = "headPart",
+	hand = "handPart",
 }
 
 export enum PainSources {

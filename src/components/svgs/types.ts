@@ -1,4 +1,3 @@
-import { on } from "events";
 export type BodySVGProps = {
 	dot: { x: number; y: number };
 	onClick: () => void;

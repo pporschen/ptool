@@ -15,32 +15,40 @@ import FemaleBodyLeft from "./Bodies/Female/FemaleBodyLeft";
 import FemaleBodyRight from "./Bodies/Female/FemaleBodyRight";
 import { BodySVGProps } from "./types";
 import { BodyParts } from "../content/types";
+import HandTop from "./Hands/HandTop";
+import HandBottom from "./Hands/HandBottom";
+import { t } from "i18next";
 
 type ImageItem = {
 	name: string;
 	svg: ({ dot, onClick, onMouseEnter, onMouseMove }: BodySVGProps) => JSX.Element;
 	id: string;
+	mirrorable: boolean;
 };
 
 const imageMap: Record<BodyParts, ImageItem[]> = {
 	headPart: [
-		{ name: "Front", svg: HeadFront, id: "headFront" },
-		{ name: "Left", svg: HeadLeft, id: "headLeft" },
-		{ name: "Right", svg: HeadRight, id: "headRight" },
-		{ name: "Back", svg: HeadBack, id: "headBack" },
-		{ name: "Top", svg: HeadTop, id: "headTop" },
+		{ name: "Front", svg: HeadFront, id: "headFront", mirrorable: false },
+		{ name: "Left", svg: HeadLeft, id: "headLeft", mirrorable: false },
+		{ name: "Right", svg: HeadRight, id: "headRight", mirrorable: false },
+		{ name: "Back", svg: HeadBack, id: "headBack", mirrorable: false },
+		{ name: "Top", svg: HeadTop, id: "headTop", mirrorable: false },
 	],
 	malePart: [
-		{ name: "Front", svg: MaleBodyFront, id: "maleBodyFront" },
-		{ name: "Back", svg: MaleBodyBack, id: "maleBodyBack" },
-		{ name: "Left", svg: MaleBodyLeft, id: "maleBodyLeft" },
-		{ name: "Right", svg: MaleBodyRight, id: "maleBodyRight" },
+		{ name: "Front", svg: MaleBodyFront, id: "maleBodyFront", mirrorable: false },
+		{ name: "Back", svg: MaleBodyBack, id: "maleBodyBack", mirrorable: false },
+		{ name: "Left", svg: MaleBodyLeft, id: "maleBodyLeft", mirrorable: false },
+		{ name: "Right", svg: MaleBodyRight, id: "maleBodyRight", mirrorable: false },
 	],
 	femalePart: [
-		{ name: "Front", svg: FemaleBodyFront, id: "femaleBodyFront" },
-		{ name: "Back", svg: FemaleBodyBack, id: "femaleBodyBack" },
-		{ name: "Left", svg: FemaleBodyLeft, id: "femaleBodyLeft" },
-		{ name: "Right", svg: FemaleBodyRight, id: "femaleBodyRight" },
+		{ name: "Front", svg: FemaleBodyFront, id: "femaleBodyFront", mirrorable: false },
+		{ name: "Back", svg: FemaleBodyBack, id: "femaleBodyBack", mirrorable: false },
+		{ name: "Left", svg: FemaleBodyLeft, id: "femaleBodyLeft", mirrorable: false },
+		{ name: "Right", svg: FemaleBodyRight, id: "femaleBodyRight", mirrorable: false },
+	],
+	handPart: [
+		{ name: "Top", svg: HandTop, id: "handTop", mirrorable: true },
+		{ name: "Bottom", svg: HandBottom, id: "handBottom", mirrorable: true },
 	],
 };
 
@@ -59,4 +67,6 @@ export {
 	FemaleBodyBack,
 	FemaleBodyLeft,
 	FemaleBodyRight,
+	HandTop,
+	HandBottom,
 };
