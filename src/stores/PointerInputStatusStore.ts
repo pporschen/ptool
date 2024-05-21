@@ -1,11 +1,12 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 export type PointerInputStatus = {
-	pointerInputIsEnabled: boolean;
-	setPointerInputIsEnabled: (pointerInputIsEnabled: boolean) => void;
+  pointerInputIsEnabled: boolean;
+  setPointerInputIsEnabled: (pointerInputIsEnabled: boolean) => void;
 };
 
 export const usePointerInputStatusStore = create<PointerInputStatus>((set) => ({
-	pointerInputIsEnabled: true,
-	setPointerInputIsEnabled: (pointerInputIsEnabled: boolean) => set({ pointerInputIsEnabled }),
+  pointerInputIsEnabled: true,
+  setPointerInputIsEnabled: (pointerInputIsEnabled: boolean) =>
+    set({ pointerInputIsEnabled }),
 }));
