@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { t } from "i18next";
 import PointerButton from "../PointerControlled/PointerButton";
 import { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -7,6 +7,7 @@ import { POINTER_DELAY } from "../../config/consts";
 import { imageMap } from "../svgs";
 import { BodyParts } from "./types";
 import theme from "../../config/theme";
+import { SwitchLeft, SwitchRight } from "@mui/icons-material";
 
 type ImageWrapperProps = {
 	pointerInputIsEnabled: boolean;
@@ -90,30 +91,32 @@ const ImageWrapper = ({
 							onClick={() => setCurrentPerspective(index)}
 							variant="contained"
 							color={currentPerspective === index ? "secondary" : "primary"}
-							sx={{ marginTop: (theme) => theme.spacing(1) }}
+							sx={{ width: "5rem" }}
 						>
 							{t(perspective.name)}
 						</PointerButton>
 					))}
 					{currentImage?.mirrorable && (
-						<PointerButton
-							pointerInputIsEnabled={pointerInputIsEnabled}
-							onClick={() => {
-								setDots((prev) => ({
-									...prev,
-									[currentImageId]: {
-										x: prev[currentImageId]?.x,
-										y: prev[currentImageId]?.y,
-										isMirrored: !prev[currentImageId]?.isMirrored,
-									},
-								}));
-							}}
-							variant="contained"
-							color="primary"
-							sx={{ marginTop: (theme) => theme.spacing(3) }}
-						>
-							{t("Mirror")}
-						</PointerButton>
+						<>
+							<Divider sx={{ marginTop: (theme) => theme.spacing(3) }} />
+							<PointerButton
+								pointerInputIsEnabled={pointerInputIsEnabled}
+								onClick={() => {
+									setDots((prev) => ({
+										...prev,
+										[currentImageId]: {
+											x: prev[currentImageId]?.x,
+											y: prev[currentImageId]?.y,
+											isMirrored: !prev[currentImageId]?.isMirrored,
+										},
+									}));
+								}}
+								variant="contained"
+								color="primary"
+							>
+								{dots[currentImageId]?.isMirrored ? <SwitchLeft /> : <SwitchRight />}
+							</PointerButton>
+						</>
 					)}
 				</Box>
 				<Box
