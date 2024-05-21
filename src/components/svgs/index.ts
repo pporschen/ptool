@@ -17,7 +17,10 @@ import { BodySVGProps } from "./types";
 import { BodyParts } from "../content/types";
 import HandTop from "./Hands/HandTop";
 import HandBottom from "./Hands/HandBottom";
-import { t } from "i18next";
+import FootInner from "./Feet/FootInner";
+import FootOuter from "./Feet/FootOuter";
+import FootTop from "./Feet/FootTop";
+import FootBottom from "./Feet/FootBottom";
 
 type ImageItem = {
 	name: string;
@@ -49,6 +52,12 @@ const imageMap: Record<BodyParts, ImageItem[]> = {
 	handPart: [
 		{ name: "Top", svg: HandTop, id: "handTop", mirrorable: true },
 		{ name: "Bottom", svg: HandBottom, id: "handBottom", mirrorable: true },
+	],
+	footPart: [
+		{ name: "Inner", svg: FootInner, id: "footInner", mirrorable: true },
+		{ name: "Outer", svg: FootOuter, id: "footOuter", mirrorable: true },
+		{ name: "Top", svg: FootTop, id: "footTop", mirrorable: true },
+		{ name: "Bottom", svg: FootBottom, id: "footBottom", mirrorable: true },
 	],
 };
 

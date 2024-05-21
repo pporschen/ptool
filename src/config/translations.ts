@@ -1,5 +1,6 @@
 import { Close } from "@mui/icons-material";
 import { head } from "lodash";
+import FootBottom from "../components/svgs/Feet/FootBottom";
 
 const resources = {
 	en: {
@@ -32,6 +33,8 @@ const resources = {
 			malePart: "Full Body Male",
 			femalePart: "Full Body Female",
 			headPart: "Head",
+			FootPart: "Feet",
+			HandPart: "Hands",
 
 			// Pain levels
 			noneLevel: "None",
@@ -84,6 +87,8 @@ const resources = {
 			malePart: "Ganzer Körper männlich",
 			femalePart: "Ganzer Körper weiblich",
 			headPart: "Kopf",
+			footPart: "Füße",
+			handPart: "Hände",
 
 			// Pain levels
 			noneLevel: "Keine Angabe",
