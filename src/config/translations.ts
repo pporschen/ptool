@@ -11,6 +11,9 @@ const resources = {
 			Back: "Back",
 			Top: "Top",
 			Bottom: "Bottom",
+			Inner: "Inner",
+			Outer: "Outer",
+			Mirror: "Mirror",
 
 			"Open Body Part Select": "Open Body Part Select",
 			"Open Pain Level Select": "Open Pain Level Select",
@@ -34,8 +37,8 @@ const resources = {
 			malePart: "Full Body Male",
 			femalePart: "Full Body Female",
 			headPart: "Head",
-			FootPart: "Feet",
-			HandPart: "Hands",
+			footPart: "Feet",
+			handPart: "Hands",
 
 			// Pain levels
 			noneLevel: "None",
@@ -67,6 +70,9 @@ const resources = {
 			Back: "Hinten",
 			Top: "Oben",
 			Bottom: "Unten",
+			Inner: "Innen",
+			Outer: "Außen",
+			Mirror: "Spiegeln",
 
 			"Open Body Part Select": "Körperteil auswählen",
 			"Open Pain Level Select": "Schmerzlevel auswählen",
