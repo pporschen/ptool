@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "https://www.painpointer.app/static/css/main.fac37dd9.css",
-    "main.js": "https://www.painpointer.app/static/js/main.29c50c2a.js",
-    "static/media/NotoSans-Italic.ttf": "https://www.painpointer.app/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
-    "static/media/NotoSans-BoldItalic.ttf": "https://www.painpointer.app/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
-    "static/media/NotoSans-SemiBold.ttf": "https://www.painpointer.app/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
-    "static/media/NotoSans-Regular.ttf": "https://www.painpointer.app/static/media/NotoSans-Regular.e49f7cc81283eef694a3.ttf",
-    "static/media/NotoSans-Bold.ttf": "https://www.painpointer.app/static/media/NotoSans-Bold.5f7ac340604afb2500f1.ttf",
-    "static/media/Montserrat-ExtraBoldItalic.ttf": "https://www.painpointer.app/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
-    "static/media/PoetsenOne-Regular.ttf": "https://www.painpointer.app/static/media/PoetsenOne-Regular.22ae511e03fc2ed8d264.ttf",
-    "service-worker.js": "https://www.painpointer.app/service-worker.js",
-    "index.html": "https://www.painpointer.app/index.html",
-    "main.fac37dd9.css.map": "https://www.painpointer.app/static/css/main.fac37dd9.css.map",
-    "main.29c50c2a.js.map": "https://www.painpointer.app/static/js/main.29c50c2a.js.map"
+    "main.css": "/ptool/static/css/main.baa5647c.css",
+    "main.js": "/ptool/static/js/main.d9d0b14c.js",
+    "static/media/NotoSans-Italic.ttf": "/ptool/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
+    "static/media/NotoSans-BoldItalic.ttf": "/ptool/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
+    "static/media/NotoSans-SemiBold.ttf": "/ptool/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
+    "static/media/NotoSans-Regular.ttf": "/ptool/static/media/NotoSans-Regular.e49f7cc81283eef694a3.ttf",
+    "static/media/NotoSans-Bold.ttf": "/ptool/static/media/NotoSans-Bold.5f7ac340604afb2500f1.ttf",
+    "static/media/Montserrat-ExtraBoldItalic.ttf": "/ptool/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
+    "static/media/PoetsenOne-Regular.ttf": "/ptool/static/media/PoetsenOne-Regular.22ae511e03fc2ed8d264.ttf",
+    "service-worker.js": "/ptool/service-worker.js",
+    "index.html": "/ptool/index.html",
+    "main.baa5647c.css.map": "/ptool/static/css/main.baa5647c.css.map",
+    "main.d9d0b14c.js.map": "/ptool/static/js/main.d9d0b14c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fac37dd9.css",
-    "static/js/main.29c50c2a.js"
+    "static/css/main.baa5647c.css",
+    "static/js/main.d9d0b14c.js"
   ]
 }
