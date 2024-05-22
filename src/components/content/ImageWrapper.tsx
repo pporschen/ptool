@@ -116,6 +116,7 @@ const ImageWrapper = ({
           width: '100%',
         }}
       >
+        {' '}
         <Box
           sx={{
             display: 'flex',
@@ -163,6 +164,16 @@ const ImageWrapper = ({
               </PointerButton>
             </>
           )}
+          <LinearProgress
+            variant="determinate"
+            value={captureProgress}
+            color="secondary"
+            sx={{
+              visibility: pointerCaptureIsEnabled ? 'visible' : 'hidden',
+              width: '100%',
+              marginTop: theme.spacing(2),
+            }}
+          />
         </Box>
         <Box
           sx={{
@@ -180,13 +191,6 @@ const ImageWrapper = ({
             onMouseMove: handleMouseMove,
             onMouseLeave: handleActivePointerCaptureExit,
           })}
-
-          <LinearProgress
-            variant="determinate"
-            value={captureProgress}
-            color="secondary"
-            sx={{ visibility: pointerCaptureIsEnabled ? 'visible' : 'hidden' }}
-          />
         </Box>
       </Box>
     </StyledCard>
