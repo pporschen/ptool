@@ -107,7 +107,7 @@ const ImageWrapper = ({
   useEffect(() => clearTimeouts(), [currentPerspective, bodyPartToDisplay]);
 
   return (
-    <StyledCard sx={{ minHeight: '700px', maxWidth: '770px' }}>
+    <StyledCard sx={{ minHeight: '700px', maxWidth: '740px' }}>
       <Box
         sx={{
           display: 'flex',
