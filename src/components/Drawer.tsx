@@ -4,6 +4,7 @@ import LanguageSelect from './LanguageSelect';
 import PointerButton from './PointerControlled/PointerButton';
 import { Dispatch, SetStateAction } from 'react';
 import { usePointerInputStatusStore } from '../stores/PointerInputStatusStore';
+import { CONTACT_EMAIL } from '../config/consts';
 
 type AppDrawerProps = {
   language: string;
@@ -24,6 +25,11 @@ const AppDrawer = ({
   const handlePointerInputToggle = () => {
     setPointerInputIsEnabled(!pointerInputIsEnabled);
   };
+
+  const openEmailWindow = () => {
+    window.open(`mailto:${CONTACT_EMAIL}`, '_blank');
+  };
+
   return (
     <>
       <Drawer
@@ -50,6 +56,11 @@ const AppDrawer = ({
                 <br />
                 <br />
                 {t('PainpointerInstructions')}
+                <br />
+                <br />
+                {t('PainpointerFeedback')}
+                <br />
+                {CONTACT_EMAIL}
               </Box>
             </ListItem>{' '}
             <Divider sx={{ margin: (theme) => theme.spacing(2) }} />

@@ -9,6 +9,8 @@ const POINTER_DELAY = 2000;
 // size of the indicator dot on SVGs
 const DOT_SIZE = 50;
 
+const CONTACT_EMAIL = 'feedback[at]painpointer.app';
+
 export {
   DWELLING_TIME_LIMIT,
   REFRESH_RATE,
@@ -16,4 +18,5 @@ export {
   ACTION_DELAY,
   DOT_SIZE,
   POINTER_DELAY,
+  CONTACT_EMAIL,
 };
