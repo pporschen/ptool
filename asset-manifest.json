@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/ptool/static/css/main.baa5647c.css",
-    "main.js": "/ptool/static/js/main.b0554a1a.js",
-    "static/media/NotoSans-Italic.ttf": "/ptool/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
-    "static/media/NotoSans-BoldItalic.ttf": "/ptool/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
-    "static/media/NotoSans-SemiBold.ttf": "/ptool/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
-    "static/media/NotoSans-Regular.ttf": "/ptool/static/media/NotoSans-Regular.e49f7cc81283eef694a3.ttf",
-    "static/media/NotoSans-Bold.ttf": "/ptool/static/media/NotoSans-Bold.5f7ac340604afb2500f1.ttf",
-    "static/media/Montserrat-ExtraBoldItalic.ttf": "/ptool/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
-    "static/media/PoetsenOne-Regular.ttf": "/ptool/static/media/PoetsenOne-Regular.22ae511e03fc2ed8d264.ttf",
-    "index.html": "/ptool/index.html",
-    "main.baa5647c.css.map": "/ptool/static/css/main.baa5647c.css.map",
-    "main.b0554a1a.js.map": "/ptool/static/js/main.b0554a1a.js.map"
+    "main.css": "https://painpointer.app/static/css/main.631c5c0b.css",
+    "main.js": "https://painpointer.app/static/js/main.b0554a1a.js",
+    "static/media/NotoSans-Italic.ttf": "https://painpointer.app/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
+    "static/media/NotoSans-BoldItalic.ttf": "https://painpointer.app/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
+    "static/media/NotoSans-SemiBold.ttf": "https://painpointer.app/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
+    "static/media/NotoSans-Regular.ttf": "https://painpointer.app/static/media/NotoSans-Regular.e49f7cc81283eef694a3.ttf",
+    "static/media/NotoSans-Bold.ttf": "https://painpointer.app/static/media/NotoSans-Bold.5f7ac340604afb2500f1.ttf",
+    "static/media/Montserrat-ExtraBoldItalic.ttf": "https://painpointer.app/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
+    "static/media/PoetsenOne-Regular.ttf": "https://painpointer.app/static/media/PoetsenOne-Regular.22ae511e03fc2ed8d264.ttf",
+    "service-worker.js": "https://painpointer.app/service-worker.js",
+    "index.html": "https://painpointer.app/index.html",
+    "main.631c5c0b.css.map": "https://painpointer.app/static/css/main.631c5c0b.css.map",
+    "main.b0554a1a.js.map": "https://painpointer.app/static/js/main.b0554a1a.js.map"
   },
   "entrypoints": [
-    "static/css/main.baa5647c.css",
+    "static/css/main.631c5c0b.css",
     "static/js/main.b0554a1a.js"
   ]
 }
