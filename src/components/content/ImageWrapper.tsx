@@ -107,14 +107,13 @@ const ImageWrapper = ({
   useEffect(() => clearTimeouts(), [currentPerspective, bodyPartToDisplay]);
 
   return (
-    <StyledCard sx={{ width: '70vw', minHeight: '700px', minWidth: '700px' }}>
+    <StyledCard sx={{ minHeight: '700px' }}>
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           gap: 2,
           width: '100%',
-          marginTop: theme.spacing(5),
         }}
       >
         <Box
@@ -123,6 +122,7 @@ const ImageWrapper = ({
             flexDirection: 'column',
             gap: 2,
             minHeight: '700px',
+            marginTop: theme.spacing(6),
           }}
         >
           {currentBodyPart.map((perspective, index) => (
@@ -181,6 +181,7 @@ const ImageWrapper = ({
             flexGrow: 1,
             height: '100%',
             cursor: 'crosshair',
+            width: '3000px',
           }}
         >
           {currentImage?.svg({
