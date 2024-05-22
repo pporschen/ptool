@@ -1,4 +1,4 @@
-import { Box, List, ListItem, styled, Drawer } from '@mui/material';
+import { Box, List, ListItem, styled, Drawer, Divider } from '@mui/material';
 import { t } from 'i18next';
 import LanguageSelect from './LanguageSelect';
 import PointerButton from './PointerControlled/PointerButton';
@@ -43,6 +43,16 @@ const AppDrawer = ({
                 setLanguage={setLanguage}
               />
             </ListItem>
+            <Divider sx={{ margin: (theme) => theme.spacing(2) }} />
+            <ListItem>
+              <Box sx={{ textAlign: 'justify', fontSize: '0.9rem' }}>
+                {t('PainpointerDescription')}
+                <br />
+                <br />
+                {t('PainpointerInstructions')}
+              </Box>
+            </ListItem>{' '}
+            <Divider sx={{ margin: (theme) => theme.spacing(2) }} />
             <ListItem sx={{ marginTop: 'auto' }}>
               <PointerButton
                 pointerInputIsEnabled

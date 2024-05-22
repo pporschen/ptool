@@ -1,6 +1,10 @@
 const resources = {
   en: {
     translation: {
+      PainpointerDescription:
+        'Painpointer is designed to help you communicate your pain levels and locations.',
+      PainpointerInstructions:
+        'Simply activate the pointer capture, move the pointer to the area of your body that is causing you pain, and wait until the red dot appears.',
       Right: 'Right',
       Left: 'Left',
       Front: 'Front',
@@ -60,6 +64,11 @@ const resources = {
   },
   de: {
     translation: {
+      PainpointerDescription:
+        'Painpointer wurde entwickelt, um dir zu helfen, deine Schmerzlevel und -orte zu kommunizieren.',
+      PainpointerInstructions:
+        'Aktiviere einfach die Pointer-Erfassung, bewege den Pointer auf den Bereich deines Körpers, der dir Schmerzen bereitet, und warte, bis der rote Punkt erscheint.',
+
       Right: 'Rechts',
       Left: 'Links',
       Front: 'Vorne',
