@@ -1,6 +1,7 @@
 import { Container, CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './config/theme';
 import ContentWrapper from './components/content/ContentWrapper';
+import { Analytics } from '@vercel/analytics/react';
 
 import AppDrawer from './components/Drawer';
 import i18n from './i18n';
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Analytics />
       <Container
         sx={{
           padding: (theme) => theme.spacing(2),
