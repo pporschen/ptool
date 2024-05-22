@@ -45,6 +45,7 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
           flexDirection: 'column',
           gap: theme.spacing(1),
           justifyContent: 'flex-end',
+          marginBottom: theme.spacing(15),
         }}
       >
         <Fab size="large" disabled>

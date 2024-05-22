@@ -114,15 +114,14 @@ const ImageWrapper = ({
           justifyContent: 'space-between',
           gap: 2,
           width: '100%',
+          marginTop: theme.spacing(5),
         }}
       >
-        {' '}
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
             gap: 2,
-            marginTop: theme.spacing(2),
             minHeight: '700px',
           }}
         >
