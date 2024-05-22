@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://painpointer.app/static/css/main.631c5c0b.css",
-    "main.js": "https://painpointer.app/static/js/main.b0554a1a.js",
+    "main.js": "https://painpointer.app/static/js/main.dbfbc6a7.js",
     "static/media/NotoSans-Italic.ttf": "https://painpointer.app/static/media/NotoSans-Italic.326dc17f956af1374895.ttf",
     "static/media/NotoSans-BoldItalic.ttf": "https://painpointer.app/static/media/NotoSans-BoldItalic.d07373228430d3c47046.ttf",
     "static/media/NotoSans-SemiBold.ttf": "https://painpointer.app/static/media/NotoSans-SemiBold.3334e733b1bce3baea7c.ttf",
@@ -12,10 +12,10 @@
     "service-worker.js": "https://painpointer.app/service-worker.js",
     "index.html": "https://painpointer.app/index.html",
     "main.631c5c0b.css.map": "https://painpointer.app/static/css/main.631c5c0b.css.map",
-    "main.b0554a1a.js.map": "https://painpointer.app/static/js/main.b0554a1a.js.map"
+    "main.dbfbc6a7.js.map": "https://painpointer.app/static/js/main.dbfbc6a7.js.map"
   },
   "entrypoints": [
     "static/css/main.631c5c0b.css",
-    "static/js/main.b0554a1a.js"
+    "static/js/main.dbfbc6a7.js"
   ]
 }
