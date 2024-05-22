@@ -48,9 +48,6 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
           marginBottom: theme.spacing(15),
         }}
       >
-        <Fab size="large" disabled>
-          {pointerInputIsEnabled ? <VisibilityIcon /> : <VisibilityOffIcon />}
-        </Fab>
         <Fab
           color="secondary"
           aria-label="add"
