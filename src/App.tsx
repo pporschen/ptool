@@ -6,9 +6,13 @@ import { Analytics } from '@vercel/analytics/react';
 import AppDrawer from './components/Drawer';
 import i18n from './i18n';
 import { useState } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [language, setLanguage] = useState(i18n.language);
+  const [language, setLanguage] = useLocalStorage<string>(
+    'language',
+    i18n.language,
+  );
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (

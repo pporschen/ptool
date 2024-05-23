@@ -6,8 +6,7 @@ import OptionsWrapper from './OptionsWrapper';
 import { BodyParts, PainLevels, FormData, PainSources } from './types';
 import { Settings } from '@mui/icons-material';
 import theme from '../../config/theme';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export type Dot = { x: number; y: number; isMirrored?: boolean };
 type DotSource = string;
@@ -24,9 +23,13 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
   );
   const [pointerCaptureIsEnabled, setPointerCaptureIsEnabled] = useState(false);
   const [dots, setDots] = useState<DotsState | {}>({});
+  const [bodyPart, setBodyPart] = useLocalStorage<BodyParts>(
+    'bodyPart',
+    BodyParts.male,
+  );
   const [formData, setFormData] = useState<FormData>({
     painLevel: PainLevels.none,
-    bodyPart: BodyParts.male,
+    bodyPart: bodyPart,
     painSource: PainSources.none,
   });
 
@@ -71,6 +74,7 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
         setDots={setDots}
         formData={formData}
         setFormData={setFormData}
+        setBodyPart={setBodyPart}
       />
     </Box>
   );

@@ -1,10 +1,11 @@
 import { Divider, SelectChangeEvent } from '@mui/material';
-import { t } from 'i18next';
+import { t, use } from 'i18next';
 import PointerButton from '../PointerControlled/PointerButton';
 import { StyledCard } from './ContentWrapper';
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { BodyParts, FormData, PainLevels, PainSources } from './types';
 import PointerSelect from '../PointerControlled/PointerSelect';
+import { set } from 'lodash';
 
 type OptionsWrapperProps = {
   pointerInputIsEnabled: boolean;
@@ -13,6 +14,7 @@ type OptionsWrapperProps = {
   setDots: Dispatch<SetStateAction<Record<string, { x: number; y: number }>>>;
   formData: FormData;
   setFormData: Dispatch<SetStateAction<FormData>>;
+  setBodyPart: (value: BodyParts) => void;
 };
 
 const OptionsWrapper = ({
@@ -22,14 +24,25 @@ const OptionsWrapper = ({
   setDots,
   formData,
   setFormData,
+  setBodyPart,
 }: OptionsWrapperProps) => {
-  const handleFormChange = (e: SelectChangeEvent<unknown>, _: ReactNode) => {
-    const { name, value } = e.target;
+  const formStateSetter = ({
+    name,
+    value,
+  }: {
+    name: string;
+    value: string;
+  }) => {
+    if (name === 'bodyPart') setBodyPart(value as BodyParts);
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFormChange = (e: SelectChangeEvent<unknown>, _: ReactNode) => {
+    formStateSetter({ name: e.target.name, value: e.target.value as string });
+  };
+
   const handleMenuItemAction = (name: string, value: string) => {
-    setFormData({ ...formData, [name]: value });
+    formStateSetter({ name, value });
   };
 
   const handlePointerCaptureToggle = () => {
