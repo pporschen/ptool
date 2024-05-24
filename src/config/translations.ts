@@ -52,6 +52,7 @@ const resources = {
       // Languages
       en: 'English',
       de: 'Deutsch',
+      fr: 'Français',
 
       // Pain sources
       noneSource: 'None',
@@ -122,6 +123,60 @@ const resources = {
       jointSource: 'Gelenk',
       nerveSource: 'Nerv',
       crampSource: 'Krampf',
+    },
+  },
+  fr: {
+    translation: {
+      Right: 'À droite',
+      Left: 'À gauche',
+      Front: 'Devant',
+      Back: 'Derrière',
+      Top: 'En haut',
+      Bottom: 'En bas',
+      Inner: "À l'intérieur",
+      Outer: "À l'extérieur",
+      Mirror: 'Refléter',
+
+      'Open Body Part Select': 'Choisir une partie du corps',
+      'Open Pain Level Select': 'Choisir le niveau de douleur',
+      'Open Pain Source Select': 'Choisir la source de la douleur',
+      'Open Language Select': 'Choisir la langue',
+      'Change Language': 'Changer la langue',
+      'Start Pointer Capture': 'Démarrer la saisie du pointeur',
+      'Disable Pointer Input': ' Activer le contrôle du pointeur',
+      'Enable Pointer Input': ' Désactiver le contrôle du pointeur',
+      'Reset Points': 'Réinitialiser les marqueurs',
+      'Stop Pointer Capture': 'Arrêter la saisie des pointeurs',
+
+      'Body Part': 'Partie du corps',
+      'Pain Level': 'Niveau de douleur',
+      'Pain Source': 'Source de douleur',
+      Language: 'Langue',
+      Close: 'Fermer',
+
+      // Body parts
+      malePart: 'Tout le corps masculin',
+      femalePart: 'Tout le corps féminin',
+      headPart: 'Tête',
+      footPart: 'Pieds',
+      handPart: 'Mains',
+
+      // Pain levels
+      noneLevel: "Pas d'indication",
+      mildLevel: 'Douleurs légères',
+      moderateLevel: 'Douleurs moyennes',
+      severeLevel: 'Douleurs intenses',
+      itchLevel: 'Démangeaison',
+
+      // Pain sources
+      noneSource: "Pas d'indication",
+      skinSource: 'Haute',
+      muscleSource: 'Muscle',
+      boneSource: 'Os',
+      organSource: 'Organe',
+      jointSource: 'Articulation',
+      nerveSource: 'Nerf',
+      crampSource: ' Crampe',
     },
   },
 };

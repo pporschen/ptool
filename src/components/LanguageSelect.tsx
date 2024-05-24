@@ -28,6 +28,7 @@ const LanguageSelect = ({
   enum AvailableLanguages {
     EN = 'en',
     DE = 'de',
+    FR = 'fr',
   }
 
   return (
