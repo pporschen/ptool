@@ -26,10 +26,6 @@ const AppDrawer = ({
     setPointerInputIsEnabled(!pointerInputIsEnabled);
   };
 
-  const openEmailWindow = () => {
-    window.open(`mailto:${CONTACT_EMAIL}`, '_blank');
-  };
-
   return (
     <>
       <Drawer

@@ -1,11 +1,10 @@
 import { Divider, SelectChangeEvent } from '@mui/material';
-import { t, use } from 'i18next';
+import { t } from 'i18next';
 import PointerButton from '../PointerControlled/PointerButton';
 import { StyledCard } from './ContentWrapper';
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { BodyParts, FormData, PainLevels, PainSources } from './types';
 import PointerSelect from '../PointerControlled/PointerSelect';
-import { set } from 'lodash';
 
 type OptionsWrapperProps = {
   pointerInputIsEnabled: boolean;
