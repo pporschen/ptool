@@ -53,6 +53,7 @@ const resources = {
       en: 'English',
       de: 'Deutsch',
       fr: 'Français',
+      es: 'Español',
 
       // Pain sources
       noneSource: 'None',
@@ -127,6 +128,13 @@ const resources = {
   },
   fr: {
     translation: {
+      PainpointerDescription:
+        "Painpointer a été conçu pour t'aider à communiquer tes niveaux et tes points de douleur.",
+      PainpointerInstructions:
+        "Il suffit d'activer la saisie du pointeur, de placer le pointeur sur la zone de ton corps qui te fait souffrir et d'attendre que le point rouge apparaisse.",
+      PainpointerFeedback:
+        'Des questions ou des commentaires? Contacte-nous par:',
+
       Right: 'À droite',
       Left: 'À gauche',
       Front: 'Devant',
@@ -143,8 +151,8 @@ const resources = {
       'Open Language Select': 'Choisir la langue',
       'Change Language': 'Changer la langue',
       'Start Pointer Capture': 'Démarrer la saisie du pointeur',
-      'Disable Pointer Input': ' Activer le contrôle du pointeur',
-      'Enable Pointer Input': ' Désactiver le contrôle du pointeur',
+      'Disable Pointer Input': 'Désactiver le contrôle du pointeur',
+      'Enable Pointer Input': 'Activer le contrôle du pointeur',
       'Reset Points': 'Réinitialiser les marqueurs',
       'Stop Pointer Capture': 'Arrêter la saisie des pointeurs',
 
@@ -177,6 +185,66 @@ const resources = {
       jointSource: 'Articulation',
       nerveSource: 'Nerf',
       crampSource: ' Crampe',
+    },
+  },
+  es: {
+    translation: {
+      PainpointerDescription:
+        'Painpointer está diseñado para ayudarte a comunicar tus niveles y localizaciones de dolor.',
+      PainpointerInstructions:
+        'Sólo tienes que activar la detección por puntero, mover el puntero a la zona de tu cuerpo que te causa dolor y esperar a que aparezca el punto rojo.',
+      PainpointerFeedback: '¿Preguntas o comentarios?',
+
+      Right: 'Derecha',
+      Left: 'Izquierda',
+      Front: 'Adelante',
+      Back: 'Delante',
+      Top: 'Arriba',
+      Bottom: 'Abajo',
+      Inner: 'Interior',
+      Outer: 'Exterior',
+      Mirror: 'Reflejara',
+
+      'Open Body Part Select': 'Selecciona una parte del cuerpo',
+      'Open Pain Level Select': 'Seleccionar el nivel de dolor',
+      'Open Pain Source Select': 'Seleccione el lugar de dolor',
+      'Open Language Select': 'Seleccione el idioma',
+      'Change Language': 'Cambiar el idioma',
+      'Start Pointer Capture': 'Iniciar detección de puntero',
+      'Disable Pointer Input': 'Desactivar el control del puntero',
+      'Enable Pointer Input': 'Activar el control del puntero',
+      'Reset Points': 'Reajustar marcas',
+      'Stop Pointer Capture': 'Deterner detección de puntero',
+
+      'Body Part': 'Parte del cuerpo',
+      'Pain Level': 'Nivel de dolor',
+      'Pain Source': 'Zona del dolor',
+      Language: 'Idioma',
+      Close: 'Cerrar',
+
+      // Body parts
+      malePart: 'Todo el cuerpo masculino',
+      femalePart: 'Todo el cuerpo femenino',
+      headPart: 'Cabeza',
+      footPart: 'Pies',
+      handPart: 'Manos',
+
+      // Pain levels
+      noneLevel: 'No especificado',
+      mildLevel: ' Dolores leves',
+      moderateLevel: 'Dolores moderados',
+      severeLevel: 'Dolores fuertes',
+      itchLevel: 'Picazón',
+
+      // Pain sources
+      noneSource: 'No especificado',
+      skinSource: 'Piel',
+      muscleSource: 'Musculo',
+      boneSource: 'Huesos',
+      organSource: 'Organos',
+      jointSource: 'Articulaciones',
+      nerveSource: 'Nervios',
+      crampSource: 'Calambre',
     },
   },
 };
