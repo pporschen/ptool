@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import resources from './config/translations';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { AVAILABLE_LANGUAGES } from './config/consts';
 
 const formatBrowserLanguage = (lng: string) => {
   if (lng.includes('-')) {
@@ -16,7 +17,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    supportedLngs: ['de', 'en', 'fr'],
+    supportedLngs: Object.values(AVAILABLE_LANGUAGES),
     interpolation: {
       escapeValue: false,
     },

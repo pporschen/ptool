@@ -2,6 +2,7 @@ import { Box, SelectChangeEvent } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import PointerSelect from './PointerControlled/PointerSelect';
+import { AVAILABLE_LANGUAGES } from '../config/consts';
 
 type LanguageSelectProps = {
   language: string;
@@ -25,11 +26,7 @@ const LanguageSelect = ({
     languageChange(event.target.value);
   };
 
-  enum AvailableLanguages {
-    EN = 'en',
-    DE = 'de',
-    FR = 'fr',
-  }
+  console.log(Object.keys(AVAILABLE_LANGUAGES));
 
   return (
     <Box
@@ -45,7 +42,7 @@ const LanguageSelect = ({
         value={language}
         onChange={handleLanguageChange}
         itemAction={languageChange}
-        items={AvailableLanguages}
+        items={AVAILABLE_LANGUAGES}
         name="language"
       />
     </Box>
