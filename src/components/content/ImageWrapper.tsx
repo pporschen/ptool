@@ -107,13 +107,14 @@ const ImageWrapper = ({
   useEffect(() => clearTimeouts(), [currentPerspective, bodyPartToDisplay]);
 
   return (
-    <StyledCard sx={{ minHeight: '700px', maxWidth: '745px' }}>
+    <StyledCard>
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           gap: 2,
           width: '100%',
+          height: '100%',
         }}
       >
         <Box
@@ -121,8 +122,8 @@ const ImageWrapper = ({
             display: 'flex',
             flexDirection: 'column',
             gap: 2,
-            minHeight: '700px',
-            marginTop: theme.spacing(6),
+            height: '100%',
+            marginTop: theme.spacing(4),
           }}
         >
           {currentBodyPart.map((perspective, index) => (
@@ -176,12 +177,22 @@ const ImageWrapper = ({
         </Box>
         <Box
           sx={{
+            display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             flexGrow: 1,
             height: '100%',
             cursor: 'crosshair',
-            width: '3000px',
+            width: '100%',
+            minHeight: 0, // Allow shrinking
+            overflow: 'hidden', // Prevent overflow
+            '& svg': {
+              maxWidth: '100%',
+              maxHeight: '100%',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain', // Maintain aspect ratio
+            },
           }}
         >
           {currentImage?.svg({

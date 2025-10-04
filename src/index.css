@@ -47,16 +47,73 @@
   font-style: italic;
 }
 
-html{
-  height: 100%;
+html {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  height: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0; 
+  overflow-x: hidden;
 }
 
 #root {
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove all scaling - just use natural responsive design */
+
+/* Additional responsive utilities */
+.responsive-container {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Ensure images and SVGs scale properly */
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for common UI elements on scaled displays */
+button, input, select, textarea {
+  box-sizing: border-box;
+}
+
+/* Smooth scaling transitions */
+* {
+  box-sizing: border-box;
+}
+
+/* Simplified: Full height usage for all resolutions */
+.MuiContainer-root {
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  overflow-y: auto !important;
+}
+
+.MuiFab-root {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .MuiFab-root {
+    width: 44px !important;
+    height: 44px !important;
+  }
 }
 
 code {

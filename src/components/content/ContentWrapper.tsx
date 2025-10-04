@@ -39,8 +39,11 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
       gap={2}
       justifyContent={'center'}
       height={'100%'}
-      minHeight={'700px'}
-      minWidth={'1000px'}
+      width={'100%'}
+      sx={{
+        flex: 1, // Take all available space
+        alignItems: 'stretch', // Make children use full height
+      }}
     >
       <Box
         sx={{
@@ -83,7 +86,10 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
 export default ContentWrapper;
 
 export const StyledCard = styled(Card)`
-  padding: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(2)};
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  flex: 1; /* Take equal space in the parent container */
 `;

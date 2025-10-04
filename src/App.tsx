@@ -19,9 +19,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <Analytics />
       <Container
+        maxWidth={false}
         sx={{
-          padding: (theme) => theme.spacing(2),
+          padding: 1,
           height: '100%',
+          width: '100%',
+          maxWidth: '100% !important',
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
         }}
       >
         <CssBaseline />

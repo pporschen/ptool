@@ -53,7 +53,12 @@ const OptionsWrapper = ({
   };
 
   return (
-    <StyledCard sx={{ width: '40vw', minWidth: '300px' }}>
+    <StyledCard
+      sx={{
+        minWidth: '300px',
+        maxWidth: '400px',
+      }}
+    >
       <PointerSelect
         buttonText="Open Body Part Select"
         pointerInputIsEnabled={pointerInputIsEnabled}
@@ -88,7 +93,7 @@ const OptionsWrapper = ({
         itemAction={(value: string) => handleMenuItemAction('painLevel', value)}
         items={PainLevels}
       />
-      <Divider sx={{ flexGrow: 1 }} />
+      <Divider sx={{ flexGrow: 1, my: 2 }} />
       <PointerButton
         pointerInputIsEnabled={pointerInputIsEnabled}
         variant="contained"
