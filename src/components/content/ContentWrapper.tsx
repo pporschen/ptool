@@ -57,8 +57,19 @@ const ContentWrapper = ({ setDrawerOpen }: ContentWrapperProps) => {
         <Fab
           color="secondary"
           aria-label="add"
-          size="large"
           onMouseEnter={() => setDrawerOpen(true)}
+          sx={{
+            width: '68px !important',
+            height: '68px !important',
+            minWidth: '68px !important',
+            minHeight: '68px !important',
+            maxWidth: '68px !important',
+            maxHeight: '68px !important',
+            boxSizing: 'border-box !important',
+            '& .MuiSvgIcon-root': {
+              fontSize: '1.75rem !important',
+            },
+          }}
         >
           <Settings />
         </Fab>
